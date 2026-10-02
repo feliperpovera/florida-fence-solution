@@ -47,7 +47,7 @@
   "openingHoursSpecification": {"@type": "OpeningHoursSpecification","dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],"opens": "08:00","closes": "18:00"},
   "knowsLanguage": ["en","es"],
   "priceRange": "$$",
-  "paymentAccepted": "Cash, Credit Card, Debit Card, Zelle",
+  "paymentAccepted": "Cash, Zelle, Visa, Mastercard, American Express, Discover",
   "makesOffer": [{"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Aluminum fence installation"}}, {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "PVC vinyl fence installation"}}, {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Wood fence installation"}}, {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Durafence installation"}}, {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Chain-link fence installation"}}]
 }
 </script>
@@ -326,6 +326,7 @@ html.lenis,html.lenis body{height:auto}
 .pay img{height:24px;width:auto;max-width:78px}
 .p-float{position:fixed;left:50%;bottom:22px;transform:translateX(-50%);z-index:101;box-shadow:0 14px 34px -10px rgba(0,0,0,.7);white-space:nowrap}
 #proposal.hide .p-float{display:none}
+.site-pays{margin-top:34px}.site-pays small{color:#f3e8d8}.foot-pays{margin-top:0;text-align:left}.foot-pays div{justify-content:flex-start}.foot-pays small{color:#9a8f82}
 </style>
 </head>
 <body>
@@ -601,6 +602,7 @@ html.lenis,html.lenis body{height:auto}
         <a class="btn btn-dark" href="#quote">Get My Free Estimate</a>
         <a class="btn btn-ghost" href="https://wa.me/17542089268?text=Hi!%20I'd%20like%20a%20free%20fence%20estimate." target="_blank" rel="noopener">WhatsApp Us</a>
       </div>
+      <div class="pays site-pays"><small>We accept</small><div><span class="pay"><svg width="20" height="14" viewBox="0 0 20 14" aria-hidden="true"><rect width="20" height="14" rx="2" fill="#4a7c3a"/><circle cx="10" cy="7" r="3" fill="none" stroke="#fff" stroke-width="1.4"/></svg>Cash</span><span class="pay"><img src="img/pay/zelle.svg" alt="Zelle" height="24" loading="lazy"></span><span class="pay"><img src="img/pay/visa.svg" alt="Visa" height="24" loading="lazy"></span><span class="pay"><img src="img/pay/mastercard.svg" alt="Mastercard" height="24" loading="lazy"></span><span class="pay"><img src="img/pay/amex.svg" alt="American Express" height="34" style="height:34px" loading="lazy"></span><span class="pay"><img src="img/pay/discover.svg" alt="Discover" height="24" loading="lazy"></span></div></div>
     </div>
   </section>
 </main>
@@ -611,6 +613,7 @@ html.lenis,html.lenis body{height:auto}
     <div><h4>Contact</h4><a href="tel:+17542089268">(754) 208-9268</a><a href="mailto:floresfloridafencing@gmail.com">floresfloridafencing@gmail.com</a><a href="https://wa.me/17542089268" target="_blank" rel="noopener">WhatsApp</a></div>
     <div><h4>Hours</h4><p>Monday – Saturday<br>8:00 AM – 6:00 PM</p></div>
     <div><h4>Explore</h4><a href="#services">Services</a><a href="#gallery">Gallery</a><a href="#reviews">Reviews</a><a href="#faq">FAQ</a></div>
+    <div style="grid-column:1/-1"><div class="pays site-pays foot-pays"><small>We accept</small><div><span class="pay"><svg width="20" height="14" viewBox="0 0 20 14" aria-hidden="true"><rect width="20" height="14" rx="2" fill="#4a7c3a"/><circle cx="10" cy="7" r="3" fill="none" stroke="#fff" stroke-width="1.4"/></svg>Cash</span><span class="pay"><img src="img/pay/zelle.svg" alt="Zelle" height="24" loading="lazy"></span><span class="pay"><img src="img/pay/visa.svg" alt="Visa" height="24" loading="lazy"></span><span class="pay"><img src="img/pay/mastercard.svg" alt="Mastercard" height="24" loading="lazy"></span><span class="pay"><img src="img/pay/amex.svg" alt="American Express" height="34" style="height:34px" loading="lazy"></span><span class="pay"><img src="img/pay/discover.svg" alt="Discover" height="24" loading="lazy"></span></div></div></div>
     <div class="copy"><span>© 2026 Florida Fence Solution LLC</span><button id="show-proposal">View proposal</button></div>
   </div>
 </footer>
@@ -644,7 +647,7 @@ const io = new IntersectionObserver(es => es.forEach(x => { if (x.isIntersecting
 document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 
 // i18n: English lives in the HTML; ES dictionary keyed by trimmed English text
-const ES = {"I want to see my website →":"Quiero ver mi página web →","Investment":"Inversión","Your plan":"Su plan","Accepted payment methods":"Medios de pago aceptados","Cash":"Efectivo","Call Now":"Llamar",
+const ES = {"We accept":"Aceptamos","I want to see my website →":"Quiero ver mi página web →","Investment":"Inversión","Your plan":"Su plan","Accepted payment methods":"Medios de pago aceptados","Cash":"Efectivo","Call Now":"Llamar",
 "Proposal prepared for Florida Fence Solution LLC": "Propuesta preparada para Florida Fence Solution LLC",
 "October 2026": "Octubre 2026",
 "Digital growth plan": "Plan de crecimiento digital",
