@@ -1,4 +1,4 @@
-<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"></head><body style="margin:0"><style>
+<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"></head><body style="margin:0"><div class="page-section"><div class="fluid-engine"><div class="fe-block"><style>
 @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
 
 /* --- Squarespace host --- */
@@ -9,8 +9,10 @@
 .fluid-engine:has(.ffs){display:flex!important;flex-direction:column!important;padding:0!important;background:#fff}
 .fe-block:has(.ffs){grid-area:auto!important;height:auto!important;width:100%!important}
 .fe-block:has(.ffs .hero){order:1}
-.fe-block:has(.sqs-block-form){order:2}
-.fe-block:has(.ffs .ffs-foot){order:3}
+.fe-block:has(.sqs-block-map),.fe-block:has(.sqs-block-map-content),.fe-block:has([class*=sqs-block-map]){order:2}
+.fe-block:has(.ffs .map-over){order:3}
+.fe-block:has(.sqs-block-form){order:4}
+.fe-block:has(.ffs .ffs-foot){order:5}
 .sqs-block-code{padding:0!important}
 .ffs h1,.ffs h2,.ffs h3,.ffs h4{font-family:var(--f)!important;font-weight:800!important;text-transform:none!important;color:inherit;margin-top:0}
 .ffs h1{letter-spacing:-.035em!important;line-height:1.05!important}
@@ -39,26 +41,50 @@
 .ffs .cat-grid .slide a img{width:100%;height:100%;object-fit:cover;transition:transform .7s var(--ease)}
 .ffs .cat-grid .slide a:hover img{transform:scale(1.06)}
 @media (max-width:767px){.ffs .cat-grid{grid-template-columns:1fr 1fr;gap:10px}.ffs .catalog-sec .tabs{flex-wrap:nowrap;overflow-x:auto}}
-/* map: card only (Basic plan blocks iframes) */
-.ffs .map-block{min-height:0;background:var(--dark);padding:clamp(24px,4vw,48px);display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap}
-.ffs .map-card{position:static;max-width:none;background:none;box-shadow:none;padding:0;color:#fff}
-.ffs .map-card h3{color:#fff!important}
-.ffs .map-card p{color:var(--muted-dark)}
-/* estimate: info on top, native form block below */
-.ffs .estimate{padding-bottom:40px}
-.ffs .estimate .wrap{grid-template-columns:1fr;max-width:900px}
-.ffs .estimate .contact-list{grid-template-columns:1fr 1fr}
-@media (max-width:767px){.ffs .estimate .contact-list{grid-template-columns:1fr}}
+/* map: native Squarespace Map block + overlay card */
+.ffs #areas{padding-bottom:16px}
+.fe-block:has([class*=sqs-block-map]){box-sizing:border-box!important;width:calc(min(1280px,100%) - 2*clamp(20px,4vw,48px))!important;height:420px!important;margin:0 auto!important;border-radius:24px;overflow:hidden;padding:0!important}
+.fe-block:has([class*=sqs-block-map]) .sqs-block,.fe-block:has([class*=sqs-block-map]) .sqs-block-content,.fe-block:has([class*=sqs-block-map]) .sqs-block-map{height:100%!important;padding:0!important}
+.fe-block:has(.ffs .map-over){position:relative!important;z-index:20!important;overflow:visible!important}
+.fe-block:has(.ffs .map-over) .sqs-block,.fe-block:has(.ffs .map-over) .sqs-block-content{overflow:visible!important}
+.fe-block:has([class*=sqs-block-map]){position:relative;z-index:1!important}
+.ffs .map-over{position:relative;z-index:3;height:0}
+.ffs .map-over .wrap{position:relative;height:0}
+.ffs .map-over .map-card{position:absolute;right:calc(var(--pad) + 24px);bottom:40px;max-width:320px}
+.ffs .map-after{height:clamp(72px,9vw,128px)}
+@media (max-width:767px){
+.fe-block:has([class*=sqs-block-map]){height:300px!important;border-radius:24px 24px 0 0}
+.ffs .map-over,.ffs .map-over .wrap{height:auto}
+.ffs .map-over .map-card{position:static;max-width:none;box-shadow:none;border-radius:0 0 24px 24px;border:1px solid var(--line);border-top:0}
+}
+/* estimate: info left, native form block on the right (desktop) */
+.ffs .estimate{padding-bottom:96px}
+.ffs .quote-slot{min-height:980px}
+.fe-block:has(.sqs-block-form){position:relative!important;z-index:30!important;box-sizing:border-box!important;background:#111;color:#fff;border-radius:24px;padding:clamp(24px,3vw,40px)!important;
+  width:calc((min(1280px,100%) - 2*clamp(20px,4vw,48px) - clamp(40px,6vw,96px))*6/11)!important;
+  margin:calc(-980px - 96px) 0 96px calc((100% - min(1280px,100%))/2 + clamp(20px,4vw,48px) + (min(1280px,100%) - 2*clamp(20px,4vw,48px) - clamp(40px,6vw,96px))*5/11 + clamp(40px,6vw,96px))!important;
+  min-height:980px}
+@media (max-width:1024px){
+.ffs .quote-slot{display:none}
+.ffs .estimate{padding-bottom:32px}
+.fe-block:has(.sqs-block-form){width:calc(100% - 2*clamp(20px,4vw,48px))!important;margin:0 auto 72px!important;min-height:0}
+}
 /* native Squarespace form styled as the dark quote card */
-.fe-block:has(.sqs-block-form){box-sizing:border-box!important;width:min(820px,calc(100% - 32px))!important;margin:0 auto 96px!important;background:#fff;border:1px solid #e6e1d9;border-top:6px solid #f0ad3d;border-radius:24px;padding:clamp(24px,3vw,40px)!important;box-shadow:0 30px 60px -30px rgba(17,17,17,.35)}
-.fe-block:has(.sqs-block-form) .sqs-block-form{padding:0!important}
+.fe-block:has(.sqs-block-form) .sqs-block-form{padding:0!important;background:transparent!important;
+--tweak-form-block-field-fill-color:#1b1a19;--tweak-form-block-field-fill-color-on-background:#1b1a19;--tweak-form-block-field-fill-color-hsl:30,4%,10%;--tweak-form-block-field-fill-color-on-background-hsl:30,4%,10%;
+--tweak-form-block-field-input-color:#fff;--tweak-form-block-field-input-color-on-background:#fff;--tweak-form-block-field-input-color-hsl:0,0%,100%;--tweak-form-block-field-input-color-on-background-hsl:0,0%,100%;
+--tweak-form-block-field-border-color:#5a544e;--tweak-form-block-field-border-color-on-background:#5a544e;--tweak-form-block-field-border-color-hsl:30,7%,33%;--tweak-form-block-field-border-color-on-background-hsl:30,7%,33%;
+--tweak-form-block-title-color:#fff;--tweak-form-block-title-color-on-background:#fff;--tweak-form-block-caption-color:#b9b2a8;--tweak-form-block-caption-color-on-background:#b9b2a8;--tweak-form-block-description-color:#b9b2a8;--tweak-form-block-description-color-on-background:#b9b2a8;
+--tweak-form-block-field-accessory-color:#fff;--tweak-form-block-field-accessory-color-on-background:#fff;--tweak-form-block-option-color:#fff;--tweak-form-block-option-color-on-background:#fff;
+--tweak-form-block-button-background-color:#f0ad3d;--tweak-form-block-button-background-color-on-background:#f0ad3d;--tweak-form-block-button-text-color:#111;--tweak-form-block-button-text-color-on-background:#111;
+--tweak-form-block-field-accent-color:#f0ad3d;--tweak-form-block-field-accent-color-on-background:#f0ad3d}
 .fe-block:has(.sqs-block-form) *{font-family:'Plus Jakarta Sans',system-ui,sans-serif}
-.fe-block:has(.sqs-block-form) .sqs-block-content::before{content:"Request your estimate";display:block;font-weight:800;font-size:clamp(1.5rem,1.3rem + .8vw,2rem);letter-spacing:-.02em;line-height:1.2;color:#111;margin-bottom:4px}
-.fe-block:has(.sqs-block-form) label,.fe-block:has(.sqs-block-form) legend,.fe-block:has(.sqs-block-form) .title,.fe-block:has(.sqs-block-form) .description,.fe-block:has(.sqs-block-form) span{color:#111!important}
-.fe-block:has(.sqs-block-form) input,.fe-block:has(.sqs-block-form) select,.fe-block:has(.sqs-block-form) textarea{color:#111!important;border:1.5px solid #5a544e!important;border-radius:12px!important;min-height:52px}
-.fe-block:has(.sqs-block-form) input:focus,.fe-block:has(.sqs-block-form) select:focus,.fe-block:has(.sqs-block-form) textarea:focus{border-color:#f0ad3d!important;box-shadow:0 0 0 3px rgba(240,173,61,.3)!important}
+.fe-block:has(.sqs-block-form) .sqs-block-content::before{content:"Request your estimate";display:block;font-weight:800;font-size:clamp(1.5rem,1.3rem + .8vw,2rem);letter-spacing:-.02em;line-height:1.2;color:#fff;margin-bottom:4px}
+.fe-block:has(.sqs-block-form) .form-wrapper::before{content:"Fields marked (required) must be filled in.";display:block;color:#b9b2a8;font-size:.95rem;margin-bottom:16px}
+.fe-block:has(.sqs-block-form) label,.fe-block:has(.sqs-block-form) legend,.fe-block:has(.sqs-block-form) .title{color:#fff!important;font-weight:600}
+.fe-block:has(.sqs-block-form) input,.fe-block:has(.sqs-block-form) select,.fe-block:has(.sqs-block-form) textarea{border-radius:12px!important;min-height:52px}
 .fe-block:has(.sqs-block-form) button[type=submit],.fe-block:has(.sqs-block-form) input[type=submit]{width:100%!important;background:#f0ad3d!important;color:#111!important;border:0!important;border-radius:999px!important;min-height:52px;font-weight:700!important;font-size:1rem!important}
-.fe-block:has(.sqs-block-form) .sqs-block-content::after{content:"No spam. No obligation.";display:block;text-align:center;color:#57524c;font-size:.85rem;margin-top:10px}
+.fe-block:has(.sqs-block-form) .sqs-block-content::after{content:"No spam. No obligation.";display:block;text-align:center;color:#b9b2a8;font-size:.85rem;margin-top:10px}
 .ffs{
   --dark:#111111; --dark-2:#1b1a19; --dark-3:#262422; --light:#ffffff; --light-2:#f5f3ef;
   --text:#111111; --muted:#57524c; --muted-dark:#b9b2a8; --line:#e6e1d9; --line-dark:#34302d;
@@ -401,7 +427,6 @@
     </div>
   </div>
 </header>
-<div id="top">
   <section class="hero">
     <img src="https://feliperpovera.github.io/florida-fence-solution/img/horizontal-louvered-pvc-fence-alley.webp" srcset="https://feliperpovera.github.io/florida-fence-solution/img/horizontal-louvered-pvc-fence-alley-700.webp 700w, https://feliperpovera.github.io/florida-fence-solution/img/horizontal-louvered-pvc-fence-alley.webp 1200w" sizes="100vw" width="1200" height="900" fetchpriority="high" alt="White horizontal louvered PVC fence along an alley, palm trees behind">
     <div class="wrap">
@@ -569,17 +594,15 @@
       <div class="counties">
         <div class="county home reveal"><h3>Broward County <small>home base</small></h3><p>Hollywood, Fort Lauderdale, Weston, Parkland, Coral Springs, Pembroke Pines, Miramar, Davie, Plantation, Sunrise, Cooper City, Southwest Ranches, Lauderhill, Pompano Beach, Deerfield Beach.</p></div>
       </div>
-      <div class="map-block reveal">
-        <div class="map-card">
+    </div>
+  </section>
+  </div>
+</div><div class="fe-block"><div class="sqs-block-map" style="background:#cfd8dc;display:grid;place-items:center">[Squarespace map block]</div></div><div class="fe-block"><div class="ffs"><div class="map-over"><div class="wrap"><div class="map-card">
           <span class="kicker">Find us</span>
           <h3>Florida Fence Solution</h3>
           <p>1331 N 70th Way<br>Hollywood, FL 33024</p>
           <a class="btn btn-accent" href="https://www.google.com/maps/dir/?api=1&amp;destination=Florida+Fence+Solution,+1331+N+70th+Way,+Hollywood,+FL+33024" target="_blank" rel="noopener">Get directions <span class="arr" aria-hidden="true">&#8594;</span></a>
-        </div>
-      </div>
-    </div>
-  </section>
-  <section id="faq" class="dark">
+        </div></div></div><div class="map-after"></div><section id="faq" class="dark">
     <div class="wrap faq-grid">
       <div class="reveal"><span class="kicker">FAQ</span><h2>Straight answers</h2></div>
       <div class="faq">
@@ -606,11 +629,11 @@
         </ul>
         <div class="pays reveal"><small>We accept</small><div><span class="pay">Cash</span><span class="pay"><img src="https://feliperpovera.github.io/florida-fence-solution/img/pay/zelle.svg" alt="Zelle" width="60" height="22" loading="lazy"></span><span class="pay"><img src="https://feliperpovera.github.io/florida-fence-solution/img/pay/visa.svg" alt="Visa" width="50" height="22" loading="lazy"></span><span class="pay"><img src="https://feliperpovera.github.io/florida-fence-solution/img/pay/mastercard.svg" alt="Mastercard" width="36" height="22" loading="lazy"></span><span class="pay"><img src="https://feliperpovera.github.io/florida-fence-solution/img/pay/amex.svg" alt="American Express" width="30" height="30" style="height:30px" loading="lazy"></span><span class="pay"><img src="https://feliperpovera.github.io/florida-fence-solution/img/pay/discover.svg" alt="Discover" width="60" height="22" loading="lazy"></span></div></div>
       </div>
+      <div class="quote-slot" aria-hidden="true"></div>
     </div>
   </section>
 </div>
-</div>
-<div style="max-width:820px;margin:0 auto 96px;background:#111;color:#fff;border-radius:24px;padding:40px">[Squarespace form block here]</div><div class="ffs"><div class="ffs-foot">
+</div><div class="fe-block"><div class="sqs-block-form"><div class="sqs-block-content"><div class="form-wrapper"><label style="display:block;margin:14px 0 6px">Name (required)</label><input style="width:100%;box-sizing:border-box;background:#1b1a19;border:1.5px solid #5a544e;color:#fff"><label style="display:block;margin:14px 0 6px">Email (required)</label><input style="width:100%;box-sizing:border-box;background:#1b1a19;border:1.5px solid #5a544e;color:#fff"><label style="display:block;margin:14px 0 6px">Phone (required)</label><input style="width:100%;box-sizing:border-box;background:#1b1a19;border:1.5px solid #5a544e;color:#fff"><label style="display:block;margin:14px 0 6px">City (required)</label><input style="width:100%;box-sizing:border-box;background:#1b1a19;border:1.5px solid #5a544e;color:#fff"><label style="display:block;margin:14px 0 6px">Fence type</label><input style="width:100%;box-sizing:border-box;background:#1b1a19;border:1.5px solid #5a544e;color:#fff"><label style="display:block;margin:14px 0 6px">Project details</label><input style="width:100%;box-sizing:border-box;background:#1b1a19;border:1.5px solid #5a544e;color:#fff"><button type="submit" style="margin-top:20px">Get My Free Estimate</button></div></div></div></div><div class="fe-block"><div class="ffs"><div class="ffs-foot">
   <div class="wrap">
     <div><a class="logo" href="#top" aria-label="Back to top"><img src="https://feliperpovera.github.io/florida-fence-solution/img/logo.png" alt="Florida Fence Solution" width="69" height="44" loading="lazy"></a><p>Family-owned fence contractor in Broward County, FL.<br>Licensed &amp; insured. Hablamos espa&#241;ol.</p></div>
     <div><h4>Contact</h4><a href="tel:+17542089268">(754) 208-9268</a><a href="https://wa.me/17542089268" target="_blank" rel="noopener">WhatsApp</a><a href="mailto:floresfloridafencing@gmail.com">Email</a></div>
@@ -626,4 +649,4 @@
   <a href="https://wa.me/17542089268?text=Hi!%20I'd%20like%20a%20free%20fence%20estimate." target="_blank" rel="noopener">WhatsApp</a>
 </nav>
 </div>
-</body></html>
+</div></div></div></body></html>
