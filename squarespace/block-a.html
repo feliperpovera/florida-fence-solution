@@ -266,9 +266,9 @@
 
 /* native Squarespace form placed in hero */
 .fluid-engine:has(.ffs){position:relative!important}
-.ffs .hero{min-height:0!important;align-items:start!important;padding:110px 0 130px!important}
-.ffs .quote-slot{min-height:560px}
-.fe-block:has(.sqs-block-form){position:absolute!important;z-index:5;top:var(--ffs-form-top,215px);right:max(20px,calc((100% - 1180px)/2 + 20px));width:min(440px,38%)!important;height:auto!important;grid-area:auto!important;background:#fffdf9;border-top:4px solid #8b6a3e;box-shadow:0 30px 60px -20px rgba(0,0,0,.5);padding:26px 28px!important}
+.ffs .hero{min-height:0!important;align-items:center!important;padding:70px 0 90px!important}
+.ffs .quote-slot{min-height:780px}
+.fe-block:has(.sqs-block-form){position:absolute!important;z-index:5;top:var(--ffs-form-top,197px);right:max(20px,calc((100% - 1180px)/2 + 20px));width:min(440px,38%)!important;height:auto!important;grid-area:auto!important;background:#fffdf9;border-top:4px solid #8b6a3e;box-shadow:0 30px 60px -20px rgba(0,0,0,.5);padding:26px 28px!important}
 .fe-block:has(.sqs-block-form) .sqs-block-form{padding:0!important}
 .fe-block:has(.sqs-block-form) *{font-family:'DM Sans',system-ui,sans-serif}
 .fe-block:has(.sqs-block-form) h2,.fe-block:has(.sqs-block-form) .form-title{font-family:'League Spartan',system-ui,sans-serif!important;font-weight:700!important;font-size:1.7rem!important;color:#231f20!important;letter-spacing:-.01em!important;text-transform:none!important}
@@ -286,6 +286,13 @@
 .fe-block:has(.ffs .hero){order:1}
 .fe-block:has(.sqs-block-form){order:2}
 .fe-block:has(.ffs .trust){order:3}
+@media (max-width:980px){
+.ffs .gallery{display:flex!important;overflow-x:auto;scroll-snap-type:x mandatory;gap:12px;margin:0 -20px;padding:4px 20px 14px;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+.ffs .gallery::-webkit-scrollbar{display:none}
+.ffs .gallery>figure{flex:0 0 72%;height:360px;scroll-snap-align:center;grid-column:auto!important;grid-row:auto!important}
+.ffs #gallery .swipe-hint{display:block!important}
+}
+@media (max-width:600px){.ffs .gallery>figure{flex-basis:84%;height:300px}}
 </style>
 <div class="ffs">
 

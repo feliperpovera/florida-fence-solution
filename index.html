@@ -340,6 +340,13 @@ html.lenis,html.lenis body{height:auto}
 .list>div>div{display:block}
 .gallery figure:nth-child(4){grid-row:auto;grid-column:span 2}
 .gallery figure:nth-child(5),.gallery figure:nth-child(6){grid-column:span 2}
+@media (max-width:980px){
+.gallery{display:flex!important;overflow-x:auto;scroll-snap-type:x mandatory;gap:12px;margin:0 -20px;padding:4px 20px 14px;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+.gallery::-webkit-scrollbar{display:none}
+.gallery>figure{flex:0 0 72%;height:360px;scroll-snap-align:center;grid-column:auto!important;grid-row:auto!important}
+#gallery .swipe-hint{display:block!important}
+}
+@media (max-width:600px){.gallery>figure{flex-basis:84%;height:300px}}
 </style>
 </head>
 <body>
@@ -545,7 +552,7 @@ html.lenis,html.lenis body{height:auto}
         <figure><img src="img/p_9a90a3.jpg" alt="White horizontal PVC vinyl privacy fence, Broward County" loading="lazy"><figcaption><span>01</span>PVC Vinyl · Broward</figcaption></figure>
         <figure><img src="img/p_29ec08.jpg" alt="Residential fence installation by Florida Fence Solution" loading="lazy"><figcaption><span>02</span>Residential · Hollywood</figcaption></figure>
         <figure><img src="img/p_4d4cdc.jpg" alt="Custom privacy fence in South Florida backyard" loading="lazy"><figcaption><span>03</span>Privacy · South Florida</figcaption></figure>
-        <figure><img src="img/p_62c075.jpg" alt="Fence and gate installation in Hollywood, FL" loading="lazy"><figcaption><span>04</span>Fence & Gate · Hollywood</figcaption></figure>
+        <figure><img src="img/p_62c075.jpg" alt="Fence and gate installation in Hollywood, FL" loading="lazy"><figcaption><span>04</span>Our Crew · Hollywood</figcaption></figure>
         <figure><img src="img/p_ea1029.jpg" alt="Completed fence project, Broward County" loading="lazy"><figcaption><span>05</span>Custom Build · Broward</figcaption></figure>
         <figure><img src="img/p_029068.jpg" alt="Fence detail by Florida Fence Solution" loading="lazy"><figcaption><span>06</span>Detail Work · Broward</figcaption></figure>
       </div>
