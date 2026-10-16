@@ -63,22 +63,27 @@ extra = '''
 .ffs .hero h1 em{color:var(--accent)!important}
 /* header always solid (no scroll JS) */
 .ffs .site-header{background:rgba(17,17,17,.88);backdrop-filter:blur(14px) saturate(1.4);-webkit-backdrop-filter:blur(14px) saturate(1.4);border-color:rgba(255,255,255,.08)}
-/* catalog: CSS tabs via :target (no JS) */
-.ffs .catalog-sec{background:var(--light-2)}
+/* catalog: CSS-only modal + tabs via :target (no JS) */
+.ffs .catalog-sec{display:none}
+.ffs .catalog-sec:has(.panel:target){display:block;position:fixed;inset:0;z-index:1000;overflow-y:auto;overscroll-behavior:contain;background:rgba(10,10,10,.72);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);padding:16px}
+.ffs .catalog-sec > .wrap{background:#fff;border-radius:var(--r-lg);max-width:1180px;margin:24px auto;padding:clamp(18px,3vw,36px)}
+.ffs .catalog-sec .head{margin-bottom:16px;align-items:start;flex-wrap:nowrap}
+.ffs .catalog-sec .head h2{font-size:clamp(1.6rem,1.3rem + 1.2vw,2.4rem);margin:0}
+.ffs .cm-x{flex:none;width:52px;height:52px;border-radius:50%;background:var(--dark);color:#fff!important;display:grid;place-items:center;font-size:1.2rem;text-decoration:none;transition:transform .2s var(--ease),background .2s}
+.ffs .cm-x:hover{background:var(--accent);color:var(--dark)!important;transform:rotate(90deg)}
 .ffs .catalog-sec .tabs a{text-decoration:none}
-.ffs .catalog-sec .panel{display:none}
+.ffs .catalog-sec .panel{display:none;scroll-margin-top:260px}
+.ffs .catalog-sec:has(.panel:target) .cm-x{position:fixed;top:28px;right:28px;z-index:5;box-shadow:0 10px 30px -10px rgba(0,0,0,.6)}
 .ffs .catalog-sec .panel:target{display:block}
-.ffs .catalog-sec:not(:has(.panel:target)) #catalog-aluminum{display:block}
-.ffs .catalog-sec:not(:has(.panel:target)) .tabs a[href="#catalog-aluminum"],
 .ffs .catalog-sec:has(#catalog-aluminum:target) .tabs a[href="#catalog-aluminum"],
 .ffs .catalog-sec:has(#catalog-wood:target) .tabs a[href="#catalog-wood"],
 .ffs .catalog-sec:has(#catalog-pvc:target) .tabs a[href="#catalog-pvc"],
 .ffs .catalog-sec:has(#catalog-chain-link:target) .tabs a[href="#catalog-chain-link"]{background:var(--dark);color:#fff;border-color:var(--dark)}
-.ffs .catalog-sec .panel-head{margin:28px 0 20px}
+.ffs .catalog-sec .panel-head{margin:20px 0}
 .ffs .cat-grid .slide a{display:block;border-radius:var(--r);overflow:hidden;aspect-ratio:4/3;cursor:zoom-in}
 .ffs .cat-grid .slide a img{width:100%;height:100%;object-fit:cover;transition:transform .7s var(--ease)}
 .ffs .cat-grid .slide a:hover img{transform:scale(1.06)}
-@media (max-width:767px){.ffs .cat-grid{grid-template-columns:1fr 1fr;gap:10px}.ffs .catalog-sec .tabs{flex-wrap:nowrap;overflow-x:auto}}
+@media (max-width:767px){.ffs .catalog-sec:has(.panel:target){padding:0}.ffs .catalog-sec > .wrap{margin:0;border-radius:0;min-height:100%}.ffs .cat-grid{grid-template-columns:1fr 1fr;gap:10px}.ffs .catalog-sec .tabs{flex-wrap:nowrap;overflow-x:auto}.ffs .cm-x{width:46px;height:46px}}
 /* map: native Squarespace Map block + overlay card */
 .ffs #areas{padding-bottom:16px}
 .fe-block:has([class*=sqs-block-map]){box-sizing:border-box!important;width:calc(min(1280px,100%) - 2*clamp(20px,4vw,48px))!important;height:420px!important;margin:0 auto!important;border-radius:24px;overflow:hidden;padding:0!important}
@@ -138,7 +143,7 @@ h = h.replace('<footer>', '<div class="ffs-foot">').replace('</footer>', '</div>
 h = re.sub(r'<dialog class="lightbox".*?</dialog>', '', h, flags=re.S)
 # catalog dialog -> inline section with :target tabs
 h = re.sub(r'<dialog class="catalog-modal" id="catalog" aria-labelledby="cm-title">\s*<div class="cm-head">\s*<div>(.*?)</div>.*?</div>',
-           r'<section class="catalog-sec" id="catalog"><div class="wrap"><div class="head"><div>\1<p class="lead">Real jobs by our crew. Pick a fence type and tap any photo to see it big.</p></div></div>', h, count=1, flags=re.S)
+           r'<section class="catalog-sec" id="catalog" role="dialog" aria-label="Our catalogs"><div class="wrap"><div class="head"><div>\1<p class="lead">Real jobs by our crew. Pick a fence type and tap any photo to see it big.</p></div><a class="cm-x" href="#fences" aria-label="Close catalogs">&#10005;</a></div>', h, count=1, flags=re.S)
 h = h.replace('</dialog>', '</div></section>')
 h = re.sub(r'<button type="button" role="tab" id="tab-([\w-]+)"[^>]*>(.*?)</button>', r'<a href="#catalog-\1">\2</a>', h)
 h = h.replace(' role="tablist"', '').replace(' hidden>', '>')
