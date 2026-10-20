@@ -69,7 +69,7 @@ def img(key, cls='', sizes='100vw', eager=False):
 HCALL = '<a class="btn btn-glass h-call" href="tel:+17542089268"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.6a1 1 0 0 1-.25 1z"/></svg><span class="long">(754) 208-9268</span><span class="short">Call</span></a>'
 
 HEAD = f'''<header class="site-header"><div class="wrap"><a class="logo" href="/" aria-label="Florida Fence Solution, home"><img src="{B}img/logo.png" alt="Florida Fence Solution" width="69" height="44"></a>
-<nav aria-label="Main"><ul><li><a href="/#fences">Fences</a></li><li><a href="/#reviews">Reviews</a></li><li><a href="/#process">Process</a></li><li><a href="/#areas">Areas</a></li><li><a href="/#faq">FAQ</a></li></ul></nav>
+<nav aria-label="Main"><ul><li><a href="/residential-fence-solutions">Fences</a></li><li><a href="/fence-company-reviews">Reviews</a></li><li><a href="/fence-installation-process">Process</a></li><li><a href="/service-areas">Areas</a></li><li><a href="/fence-faq">FAQ</a></li><li><a href="/blog">Blog</a></li></ul></nav>
 <div class="h-right">{HCALL}<a class="btn btn-accent" href="/#estimate">Free estimate</a></div></div></header>'''
 
 SVC_NAV = [('vinyl-pvc-fence-installation', 'Vinyl &amp; PVC fences'), ('aluminum-pool-fence-installation', 'Aluminum &amp; pool fences'),
@@ -152,3 +152,4 @@ json.dump(meta, open('cities/meta.json', 'w'), indent=1)
 open('cities/preview.html','w').write('<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"></head><body style="margin:0">'+open('cities/hollywood.html').read()+'</body></html>')
 print([len(open(f'cities/{c["slug"]}.html').read()) for c in C])
 exec(open('services.py').read())
+exec(open('pages.py').read())
