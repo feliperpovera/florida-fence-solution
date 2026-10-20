@@ -5,7 +5,7 @@ PCSS = '''<style>
 .ffs .article h3{margin:24px 0 8px}
 .ffs .article p,.ffs .article li{color:var(--muted);margin-bottom:12px;line-height:1.65}
 .ffs .article ul,.ffs .article ol{margin:0 0 16px 22px}
-.ffs .article a{color:inherit;text-decoration:underline;text-decoration-color:var(--accent);text-underline-offset:3px}
+.ffs .article p a,.ffs .article li a,.ffs .faq a{color:inherit;text-decoration:underline;text-decoration-color:var(--accent);text-underline-offset:3px}
 .ffs .article .reasons p{color:var(--muted-dark)}
 .ffs .article .reasons h3{color:#fff;margin:0 0 6px}
 .ffs .cmp-wrap{overflow-x:auto;margin:16px 0 24px}
