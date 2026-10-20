@@ -130,6 +130,7 @@ section{padding:clamp(72px,9vw,128px) 0}
 .site-header nav a:hover{background:rgba(255,255,255,.12)}
 .h-right{display:flex;align-items:center;gap:10px}
 .h-right .btn{min-height:44px;padding:10px 20px;font-size:.92rem}
+.h-call{gap:8px}.h-call .short{display:none}
 .lang{display:inline-flex;border-radius:999px;background:rgba(255,255,255,.12);padding:3px}
 .lang button{background:none;border:0;color:#fff;padding:6px 11px;border-radius:999px;cursor:pointer;font:700 .78rem var(--f);letter-spacing:.04em;min-width:38px;min-height:32px}
 .lang button.on{background:#fff;color:var(--dark)}
@@ -290,7 +291,7 @@ section{padding:clamp(72px,9vw,128px) 0}
 
 /* footer */
 footer{background:var(--dark);color:var(--muted-dark);padding:clamp(56px,6vw,80px) 0 40px;font-size:.95rem}
-footer .wrap{display:grid;grid-template-columns:2fr 1fr 1fr;gap:40px}
+footer .wrap{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px}
 footer .logo{display:inline-block;margin-bottom:16px}
 footer h4{color:#fff;margin-bottom:12px;font-size:1rem}
 footer a{text-decoration:none;display:block;margin-bottom:8px}
@@ -439,7 +440,9 @@ footer a:hover{color:#fff}
   body{padding-bottom:64px}
   .site-header .wrap{height:66px}
   .logo img{height:36px}
-  .h-right .btn{display:none}
+  .h-right{gap:6px}
+  .h-right .btn{min-height:40px;padding:8px 14px;font-size:.85rem}
+  .h-call .long{display:none}.h-call .short{display:inline}
   .hero{padding-top:96px}
   .ctas .btn{flex:1 1 100%}
   .stats ul{grid-template-columns:1fr 1fr;gap:28px 16px}
@@ -475,6 +478,7 @@ footer a:hover{color:#fff}
     </ul></nav>
     <div class="h-right">
       <span class="lang" role="group" aria-label="Language"><button type="button" data-l="en">EN</button><button type="button" data-l="es">ES</button></span>
+      <a class="btn btn-glass h-call" href="tel:+17542089268" data-ev="header"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.6a1 1 0 0 1-.25 1z"/></svg><span class="long">(754) 208-9268</span><span class="short">Call</span></a>
       <a class="btn btn-accent" href="#estimate">Free estimate</a>
     </div>
   </div>
@@ -740,6 +744,7 @@ footer a:hover{color:#fff}
   <div class="wrap">
     <div><a class="logo" href="#top" aria-label="Back to top"><img src="img/logo.png" alt="Florida Fence Solution" width="69" height="44" loading="lazy"></a><p>Family-owned fence contractor in Broward County, FL.<br>Licensed &amp; insured. Hablamos español.</p></div>
     <div><h4>Contact</h4><a href="tel:+17542089268" data-ev="footer">(754) 208-9268</a><a href="https://wa.me/17542089268" target="_blank" rel="noopener" data-ev="footer">WhatsApp</a><a href="mailto:floresfloridafencing@gmail.com">Email</a></div>
+    <div><h4>Services</h4><a href="/vinyl-pvc-fence-installation">Vinyl &amp; PVC fences</a><a href="/aluminum-pool-fence-installation">Aluminum &amp; pool fences</a><a href="/wood-fence-installation">Wood fences</a><a href="/chain-link-fence-installation">Chain-link fences</a><a href="/fence-repair">Fence repair</a></div>
     <div><h4>Hours</h4><p>Mon–Sat<br>8 AM–6 PM</p></div>
     <div class="copy">© 2026 Florida Fence Solution LLC</div>
   </div>

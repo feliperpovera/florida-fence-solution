@@ -5,12 +5,12 @@ B = 'https://feliperpovera.github.io/florida-fence-solution/'
 css = open('block-a.html').read()
 css = css[:css.index('</style>') + 8]
 # city pages have no Squarespace form/map blocks; keep code blocks full width
-css = css.replace('</style>', '.fe-block:has(.ffs){order:0!important}\n.ffs .city-hero{min-height:72svh}\n.ffs .near a{display:inline-block;margin:4px 6px 4px 0;padding:8px 14px;border-radius:999px;background:var(--light-2);font-weight:600;font-size:.92rem;text-decoration:none}\n.ffs .near a:hover{background:var(--accent)}\n.ffs .prose p{color:var(--muted);margin-bottom:14px;max-width:70ch}\n</style>')
+css = css.replace('</style>', '.fe-block:has(.ffs){order:0!important}\n.ffs .city-hero{min-height:72svh}\n.ffs .near a{display:inline-block;margin:4px 6px 4px 0;padding:8px 14px;border-radius:999px;background:var(--light-2);font-weight:600;font-size:.92rem;text-decoration:none}\n.ffs .near a:hover{background:var(--accent)}\n.ffs .prose p{color:var(--muted);margin-bottom:14px;max-width:70ch}\n.ffs .price li{margin:0 0 8px 18px;color:var(--muted)}\n</style>')
 
 IMG = {
  'pvc': 'img/white-pvc-privacy-fence-backyard-pool', 'wood': 'img/horizontal-pine-wood-fence',
  'alley': 'img/horizontal-louvered-pvc-fence-alley', 'chain': 'img/black-chain-link-fence-garden',
- 'louver': 'img/louvered-pvc-privacy-panels', 'crew': 'img/florida-fence-solution-crew'}
+ 'louver': 'img/louvered-pvc-privacy-panels', 'crew': 'img/florida-fence-solution-crew', 'alu': 'img/aluminum-horizontal-durafence'}
 
 C = [
  dict(slug='hollywood', name='Hollywood', hero='alley', hoods='Hollywood Lakes, Emerald Hills, Driftwood, Hollywood Hills and the neighborhoods west of I-95',
@@ -66,6 +66,26 @@ def img(key, cls='', sizes='100vw', eager=False):
     mid = '' if key in ('louver', 'crew') else f', {B}{base}-800.webp 800w'
     return f'<img src="{B}{base}-480.webp" srcset="{B}{base}-480.webp 480w{mid}, {B}{base}.webp {big}w" sizes="{sizes}" alt="" {"fetchpriority=\"high\"" if eager else "loading=\"lazy\""} width="1200" height="900">'
 
+HCALL = '<a class="btn btn-glass h-call" href="tel:+17542089268"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.6a1 1 0 0 1-.25 1z"/></svg><span class="long">(754) 208-9268</span><span class="short">Call</span></a>'
+
+HEAD = f'''<header class="site-header"><div class="wrap"><a class="logo" href="/" aria-label="Florida Fence Solution, home"><img src="{B}img/logo.png" alt="Florida Fence Solution" width="69" height="44"></a>
+<nav aria-label="Main"><ul><li><a href="/#fences">Fences</a></li><li><a href="/#reviews">Reviews</a></li><li><a href="/#process">Process</a></li><li><a href="/#areas">Areas</a></li><li><a href="/#faq">FAQ</a></li></ul></nav>
+<div class="h-right">{HCALL}<a class="btn btn-accent" href="/#estimate">Free estimate</a></div></div></header>'''
+
+SVC_NAV = [('vinyl-pvc-fence-installation', 'Vinyl &amp; PVC fences'), ('aluminum-pool-fence-installation', 'Aluminum &amp; pool fences'),
+ ('wood-fence-installation', 'Wood fences'), ('chain-link-fence-installation', 'Chain-link fences'), ('fence-repair', 'Fence repair')]
+SVC_LINKS = ''.join(f'<a href="/{u}">{t}</a>' for u, t in SVC_NAV)
+
+def foot(wa):
+    return f'''<div class="ffs-foot"><div class="wrap">
+<div><a class="logo" href="/" aria-label="Back to home"><img src="{B}img/logo.png" alt="Florida Fence Solution" width="69" height="44" loading="lazy"></a><p>Family-owned fence contractor in Broward County, FL.<br>1331 N 70th Way, Hollywood, FL 33024. Hablamos espa&#241;ol.</p></div>
+<div><h4>Contact</h4><a href="tel:+17542089268">(754) 208-9268</a><a href="https://wa.me/17542089268" target="_blank" rel="noopener">WhatsApp</a><a href="mailto:floresfloridafencing@gmail.com">Email</a></div>
+<div><h4>Services</h4>{SVC_LINKS}</div>
+<div><h4>Hours</h4><p>Mon&#8211;Sat<br>8 AM&#8211;6 PM</p></div>
+<div class="copy">&#169; 2026 Florida Fence Solution LLC</div></div></div>
+<a class="wa-float" href="{wa}" target="_blank" rel="noopener" aria-label="Chat on WhatsApp"><svg width="30" height="30" viewBox="0 0 32 32" fill="currentColor" aria-hidden="true"><path d="M16 3C8.8 3 3 8.7 3 15.8c0 2.3.6 4.5 1.8 6.5L3 29l6.9-1.8c1.9 1 4 1.6 6.1 1.6 7.2 0 13-5.7 13-12.8S23.2 3 16 3z"/></svg></a>
+<nav class="mobile-bar" aria-label="Quick contact"><a href="tel:+17542089268">Call</a><a href="{wa}" target="_blank" rel="noopener">WhatsApp</a></nav>'''
+
 def page(c):
     n = c['name']
     others = [x for x in C if x is not c]
@@ -76,9 +96,7 @@ def page(c):
     wa = "https://wa.me/17542089268?text=" + ("Hi! I'd like a free fence estimate in " + n + ".").replace(' ', '%20')
     alt = f'Fence installed by Florida Fence Solution in {n}, FL'
     return f'''<div class="ffs">
-<header class="site-header"><div class="wrap"><a class="logo" href="/" aria-label="Florida Fence Solution, home"><img src="{B}img/logo.png" alt="Florida Fence Solution" width="69" height="44"></a>
-<nav aria-label="Main"><ul><li><a href="/#fences">Fences</a></li><li><a href="/#reviews">Reviews</a></li><li><a href="/#process">Process</a></li><li><a href="/#areas">Areas</a></li><li><a href="/#faq">FAQ</a></li></ul></nav>
-<div class="h-right"><a class="btn btn-accent" href="/#estimate">Free estimate</a></div></div></header>
+{HEAD}
 <section class="hero city-hero">{img(c['hero'], eager=True).replace('alt=""', f'alt="{alt}"')}
 <div class="wrap"><div class="hero-copy">
 <span class="kicker">Fence contractor &#183; {n}, FL</span>
@@ -118,13 +136,7 @@ def page(c):
 <div class="near"><span class="kicker">Nearby areas</span><h3 style="margin-bottom:12px">We also build fences in</h3>{near}<a href="/#areas">All of Broward County</a></div>
 </div></section>
 
-<div class="ffs-foot"><div class="wrap">
-<div><a class="logo" href="/" aria-label="Back to home"><img src="{B}img/logo.png" alt="Florida Fence Solution" width="69" height="44" loading="lazy"></a><p>Family-owned fence contractor in Broward County, FL.<br>1331 N 70th Way, Hollywood, FL 33024. Hablamos espa&#241;ol.</p></div>
-<div><h4>Contact</h4><a href="tel:+17542089268">(754) 208-9268</a><a href="https://wa.me/17542089268" target="_blank" rel="noopener">WhatsApp</a><a href="mailto:floresfloridafencing@gmail.com">Email</a></div>
-<div><h4>Hours</h4><p>Mon&#8211;Sat<br>8 AM&#8211;6 PM</p></div>
-<div class="copy">&#169; 2026 Florida Fence Solution LLC</div></div></div>
-<a class="wa-float" href="{wa}" target="_blank" rel="noopener" aria-label="Chat on WhatsApp"><svg width="30" height="30" viewBox="0 0 32 32" fill="currentColor" aria-hidden="true"><path d="M16 3C8.8 3 3 8.7 3 15.8c0 2.3.6 4.5 1.8 6.5L3 29l6.9-1.8c1.9 1 4 1.6 6.1 1.6 7.2 0 13-5.7 13-12.8S23.2 3 16 3z"/></svg></a>
-<nav class="mobile-bar" aria-label="Quick contact"><a href="tel:+17542089268">Call</a><a href="{wa}" target="_blank" rel="noopener">WhatsApp</a></nav>
+{foot(wa)}
 </div>'''
 
 os.makedirs('cities', exist_ok=True)
@@ -139,3 +151,4 @@ for c in C:
 json.dump(meta, open('cities/meta.json', 'w'), indent=1)
 open('cities/preview.html','w').write('<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"></head><body style="margin:0">'+open('cities/hollywood.html').read()+'</body></html>')
 print([len(open(f'cities/{c["slug"]}.html').read()) for c in C])
+exec(open('services.py').read())
