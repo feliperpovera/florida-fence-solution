@@ -85,6 +85,12 @@ extra = '''
 .ffs .cat-grid .slide a:hover img{transform:scale(1.06)}
 @media (max-width:767px){.ffs .catalog-sec:has(.panel:target){padding:0}.ffs .catalog-sec > .wrap{margin:0;border-radius:0;min-height:100%}.ffs .cat-grid{grid-template-columns:1fr 1fr;gap:10px}.ffs .catalog-sec .tabs{flex-wrap:nowrap;overflow-x:auto}.ffs .cm-x{width:46px;height:46px}}
 /* map: native Squarespace Map block + overlay card */
+.ffs .map-static{display:block;position:relative;margin-top:16px;border-radius:24px;overflow:hidden;height:420px;background:#e8e4dd}
+.ffs .map-static img{width:100%;height:100%;object-fit:cover;display:block}
+.ffs .map-static .osm{position:absolute;left:10px;bottom:8px;font-size:11px;background:rgba(255,255,255,.85);padding:2px 6px;border-radius:4px;color:#333}
+.ffs .map-over .map-card{bottom:56px!important}
+@media (max-width:767px){.ffs .map-static{height:300px;border-radius:24px 24px 0 0}}
+
 .ffs #areas{padding-bottom:16px}
 .fe-block:has([class*=sqs-block-map]){box-sizing:border-box!important;width:calc(min(1280px,100%) - 2*clamp(20px,4vw,48px))!important;height:420px!important;margin:0 auto!important;border-radius:24px;overflow:hidden;padding:0!important}
 .fe-block:has([class*=sqs-block-map]) .sqs-block,.fe-block:has([class*=sqs-block-map]) .sqs-block-content,.fe-block:has([class*=sqs-block-map]) .sqs-block-map{height:100%!important;padding:0!important}
@@ -129,7 +135,7 @@ extra = '''
 .fe-block:has(.sqs-block-form) button[type=submit],.fe-block:has(.sqs-block-form) input[type=submit]{width:100%!important;background:#f0ad3d!important;color:#111!important;border:0!important;border-radius:999px!important;min-height:52px;font-weight:700!important;font-size:1rem!important}
 .fe-block:has(.sqs-block-form) .sqs-block-content::after{content:"No spam. No obligation.";display:block;text-align:center;color:#b9b2a8;font-size:.85rem;margin-top:10px}
 '''
-css = '@import url(\'https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap\');\n' + extra + css
+css = open('squarespace/fontface.css').read().strip() + '\n' + extra + css
 css = re.sub(r'[^\x00-\x7f]', lambda m: '\\%x ' % ord(m.group(0)), css)
 # minify
 css = re.sub(r'/\*.*?\*/', '', css, flags=re.S)
@@ -155,7 +161,11 @@ h = re.sub(r'<button type="button"><img ([^>]*?)data-full="([^"]+)"([^>]*)></but
 # map iframe -> card only
 h = re.sub(r'<iframe title="Map:.*?</iframe>\s*', '', h, flags=re.S)
 m = re.search(r'<div class="map-block reveal">\s*(<div class="map-card">.*?</a>\s*</div>)\s*</div>', h, flags=re.S)
-card = m.group(1); h = h[:m.start()] + h[m.end():]
+STATIC = ('<a class="map-static" href="https://maps.google.com/?cid=273622298774698385" target="_blank" rel="noopener" aria-label="Open Florida Fence Solution in Google Maps">'
+          '<picture><source media="(max-width:767px)" srcset="img/map-hollywood-mobile.webp">'
+          '<img src="img/map-hollywood.webp" srcset="img/map-hollywood.webp 1280w, img/map-hollywood-2560.webp 2560w" sizes="(max-width:1280px) 100vw, 1280px" width="1280" height="420" loading="lazy" alt="Map: Florida Fence Solution, 1331 N 70th Way, Hollywood, FL 33024"></picture>'
+          '<span class="osm">&#169; OpenStreetMap contributors</span></a>')
+card = m.group(1); h = h[:m.start()] + STATIC + h[m.end():]
 h = h.replace('<section id="faq"', '@@CUT@@<div class="map-over"><div class="wrap">' + card + '</div></div><div class="map-after"></div><section id="faq"', 1)
 # remove JS form (native Squarespace form replaces it)
 h = re.sub(r'\s*<!-- TODO: to receive leads.*?-->', '', h, flags=re.S)
