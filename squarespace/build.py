@@ -129,8 +129,12 @@ extra = '''
 .fe-block:has(.sqs-block-form) button[type=submit],.fe-block:has(.sqs-block-form) input[type=submit]{width:100%!important;background:#f0ad3d!important;color:#111!important;border:0!important;border-radius:999px!important;min-height:52px;font-weight:700!important;font-size:1rem!important}
 .fe-block:has(.sqs-block-form) .sqs-block-content::after{content:"No spam. No obligation.";display:block;text-align:center;color:#b9b2a8;font-size:.85rem;margin-top:10px}
 '''
-css = '@import url(\'https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap\');\n' + extra + css
+css = '@import url(\'https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap\');\n' + extra + css
 css = re.sub(r'[^\x00-\x7f]', lambda m: '\\%x ' % ord(m.group(0)), css)
+# minify
+css = re.sub(r'/\*.*?\*/', '', css, flags=re.S)
+css = re.sub(r'\s*\n\s*', '\n', css)
+css = re.sub(r'\s*([{};,])\s*', r'\1', css)
 
 # ---------- HTML ----------
 h = body

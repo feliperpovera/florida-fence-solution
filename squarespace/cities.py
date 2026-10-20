@@ -62,7 +62,9 @@ C = [
 
 def img(key, cls='', sizes='100vw', eager=False):
     base = IMG[key]
-    return f'<img src="{B}{base}.webp" srcset="{B}{base}-700.webp 700w, {B}{base}.webp 1200w" sizes="{sizes}" alt="" {"fetchpriority=\"high\"" if eager else "loading=\"lazy\""} width="1200" height="900">'
+    big = {'crew': 900, 'louver': 674}.get(key, 1200)
+    mid = '' if key in ('louver', 'crew') else f', {B}{base}-800.webp 800w'
+    return f'<img src="{B}{base}-480.webp" srcset="{B}{base}-480.webp 480w{mid}, {B}{base}.webp {big}w" sizes="{sizes}" alt="" {"fetchpriority=\"high\"" if eager else "loading=\"lazy\""} width="1200" height="900">'
 
 def page(c):
     n = c['name']
@@ -90,9 +92,9 @@ def page(c):
 <div class="head"><div><span class="kicker">Fences in {n}</span><h2>What we install in {n}</h2></div>
 <p class="lead">Every job is measured, permitted and built by our own crew. Serving {c['hoods']}.</p></div>
 <div class="bento" data-carousel>
-<article class="card photo b-big">{img('pvc','', '(max-width:640px) 100vw, 50vw').replace('alt=""', f'alt="White PVC privacy fence in {n}, FL"')}<span class="tag">Vinyl</span><h3>PVC vinyl fences</h3><p>Privacy without painting. Hose it off.</p><a class="stretch" href="/#catalog-pvc"><span>See catalog &#8594;</span></a></article>
-<article class="card photo b-wide">{img('wood','', '(max-width:640px) 100vw, 50vw').replace('alt=""', f'alt="Horizontal wood fence in {n}, FL"')}<span class="tag">Wood</span><h3>Wood fences</h3><p>Horizontal, board-on-board, shadowbox, stockade.</p><a class="stretch" href="/#catalog-wood"><span>See catalog &#8594;</span></a></article>
-<article class="card photo">{img('chain','', '(max-width:640px) 100vw, 25vw').replace('alt=""', f'alt="Black chain-link fence in {n}, FL"')}<span class="tag">Coated steel</span><h3>Chain-link</h3><p>Black or galvanized security.</p><a class="stretch" href="/#catalog-chain-link"><span>See catalog &#8594;</span></a></article>
+<article class="card photo b-big">{img('pvc','', '(max-width:767px) 84vw, 600px').replace('alt=""', f'alt="White PVC privacy fence in {n}, FL"')}<span class="tag">Vinyl</span><h3>PVC vinyl fences</h3><p>Privacy without painting. Hose it off.</p><a class="stretch" href="/#catalog-pvc"><span>See catalog &#8594;</span></a></article>
+<article class="card photo b-wide">{img('wood','', '(max-width:767px) 84vw, 600px').replace('alt=""', f'alt="Horizontal wood fence in {n}, FL"')}<span class="tag">Wood</span><h3>Wood fences</h3><p>Horizontal, board-on-board, shadowbox, stockade.</p><a class="stretch" href="/#catalog-wood"><span>See catalog &#8594;</span></a></article>
+<article class="card photo">{img('chain','', '(max-width:767px) 84vw, 300px').replace('alt=""', f'alt="Black chain-link fence in {n}, FL"')}<span class="tag">Coated steel</span><h3>Chain-link</h3><p>Black or galvanized security.</p><a class="stretch" href="/#catalog-chain-link"><span>See catalog &#8594;</span></a></article>
 <article class="card accent"><span class="tag">Aluminum</span><h3>Aluminum &amp; Durafence</h3><p>Won't rust. Built for hurricane season.</p><a class="stretch" href="/#catalog-aluminum"><span>See catalog &#8594;</span></a></article>
 </div></div></section>
 
