@@ -172,7 +172,7 @@ h = re.sub(r'\s*<!-- TODO: to receive leads.*?-->', '', h, flags=re.S)
 h = re.sub(r'<form class="quote.*?</form>', '<div class="quote-slot" aria-hidden="true"></div>', h, flags=re.S)
 h = re.sub(r'<!--.*?-->', '', h, flags=re.S)
 h = re.sub(r' data-ev="[^"]*"', '', h)
-h = re.sub(r'(src|href|srcset)="(?!https?:|tel:|mailto:|#)([^"]+)"', lambda m: f'{m.group(1)}="' + ', '.join((B + u.strip()) for u in m.group(2).split(', ')) + '"' if m.group(1) == 'srcset' else f'{m.group(1)}="{B}{m.group(2)}"', h)
+h = re.sub(r'(src|href|srcset)="(?!https?:|tel:|mailto:|#|/)([^"]+)"', lambda m: f'{m.group(1)}="' + ', '.join((B + u.strip()) for u in m.group(2).split(', ')) + '"' if m.group(1) == 'srcset' else f'{m.group(1)}="{B}{m.group(2)}"', h)
 h = h.encode('ascii', 'xmlcharrefreplace').decode()
 h = re.sub(r'\n\s*\n+', '\n', h)
 
