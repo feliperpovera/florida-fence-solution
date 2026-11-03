@@ -2,7 +2,7 @@
 CAT = B + 'img/catalog/'
 S = [
  dict(slug='vinyl-pvc-fence-installation', ag='Vinyl & PVC Fence', hero='pvc', tag='PVC vinyl',
-      title='Vinyl & PVC Fence Installation in Broward County | Florida Fence Solution',
+      title='Vinyl & PVC Fences in Broward, FL | Florida Fence Solution',
       desc='PVC vinyl privacy fence installation in Broward County, FL. White or tan, horizontal, louvered and shadowbox. Permits & HOA handled. Free estimate: (754) 208-9268.',
       h1='Vinyl &amp; PVC fence installation <em>in Broward County.</em>',
       sub='Privacy without painting. We measure, pull the permit and install white or tan PVC vinyl fences with our own crew.',
@@ -17,7 +17,7 @@ S = [
            ('Will my HOA approve a PVC fence?', 'Most Broward HOAs approve white or tan PVC. We give you the specs and drawings for the application.'),
            ('How long does installation take?', 'Most residential PVC fences are installed in 1 to 3 days once the permit is approved.')]),
  dict(slug='aluminum-pool-fence-installation', ag='Aluminum & Pool Fence', hero='alu', tag='Aluminum',
-      title='Aluminum, Durafence & Pool Fence Installation in Broward | Florida Fence Solution',
+      title='Aluminum & Pool Fences, Broward | Florida Fence Solution',
       desc='Aluminum, Durafence and pool fence installation in Broward County, FL. Rust-proof, hurricane-ready, built to Florida pool code. Free estimate: (754) 208-9268.',
       h1='Aluminum, Durafence &amp; pool fences <em>that never rust.</em>',
       sub='Rust-proof fencing for salt air and hurricane season. Pool barriers built to Florida code, with self-closing gates.',
@@ -33,7 +33,7 @@ S = [
            ('Is aluminum good near the beach?', 'Yes. Powder-coated aluminum does not rust, which makes it the best option for coastal and canal homes.'),
            ('Do you install aluminum gates?', 'Yes. Walk gates, double driveway gates and custom metal gates.')]),
  dict(slug='wood-fence-installation', ag='Wood & Chain Link Fence', hero='wood', tag='Wood',
-      title='Wood Fence Installation in Broward County | Florida Fence Solution',
+      title='Wood Fence Installation in Broward | Florida Fence Solution',
       desc='Wood fence installation in Broward County, FL: horizontal, shadowbox, board-on-board, ranch style. Pressure-treated pine. Free estimate: (754) 208-9268.',
       h1='Wood fence installation <em>built on site by our crew.</em>',
       sub='Warm, natural pine fences: horizontal, shadowbox, board-on-board and ranch style. Measured, permitted and installed in Broward.',
@@ -48,7 +48,7 @@ S = [
            ('Do you stain or seal wood fences?', 'Yes, we can seal or stain the fence after installation to protect it from sun and rain.'),
            ('Do you build horizontal wood fences?', 'Yes. Horizontal wood is one of our most requested modern styles.')]),
  dict(slug='chain-link-fence-installation', ag='Wood & Chain Link Fence', hero='chain', tag='Chain-link',
-      title='Chain Link Fence Installation in Broward County | Florida Fence Solution',
+      title='Chain Link Fences in Broward County | Florida Fence Solution',
       desc='Black and galvanized chain-link fence installation in Broward County, FL, with privacy slats. Residential & commercial. Free estimate: (754) 208-9268.',
       h1='Chain-link fence installation <em>for homes and businesses.</em>',
       sub='Black vinyl-coated or galvanized chain-link, with optional privacy slats. Fast, secure and budget-friendly.',
@@ -81,7 +81,7 @@ S = [
 
 def spage(s):
     wa = "https://wa.me/17542089268?text=" + ("Hi! I'd like a free estimate for " + s['tag'].lower() + " fence work.").replace(' ', '%20')
-    gal = ''.join(f'<figure class="slide"><a href="{CAT}{f}.webp" target="_blank" rel="noopener"><img src="{CAT}{f}-sm.webp" alt="{cap} by Florida Fence Solution in Broward County" loading="lazy" width="640" height="480"></a><figcaption>{cap}</figcaption></figure>' for f, cap in s['gal'])
+    gal = ''.join(f'<figure class="slide"><a href="{CAT}{f}.webp" target="_blank" rel="noopener"><img src="{CAT}{f}-sm.webp" alt="{cap} by Florida Fence Solution in Broward County" loading="lazy" decoding="async" width="640" height="480"></a><figcaption>{cap}</figcaption></figure>' for f, cap in s['gal'])
     chips = ''.join(f'<li>{x}</li>' for x in s['styles'])
     faqs = ''.join(f'<details><summary>{q}</summary><p>{a}</p></details>' for q, a in s['faq'] + [
         ('Are you licensed and insured?', 'Yes. Florida Fence Solution is licensed and insured, family-owned and based in Hollywood, FL.')])

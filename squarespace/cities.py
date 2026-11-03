@@ -64,7 +64,7 @@ def img(key, cls='', sizes='100vw', eager=False):
     base = IMG[key]
     big = {'crew': 900, 'louver': 674}.get(key, 1200)
     mid = '' if key in ('louver', 'crew') else f', {B}{base}-800.webp 800w'
-    return f'<img src="{B}{base}-480.webp" srcset="{B}{base}-480.webp 480w{mid}, {B}{base}.webp {big}w" sizes="{sizes}" alt="" {"fetchpriority=\"high\"" if eager else "loading=\"lazy\""} width="1200" height="900">'
+    return f'<img src="{B}{base}-480.webp" srcset="{B}{base}-480.webp 480w{mid}, {B}{base}.webp {big}w" sizes="{sizes}" alt="" {"fetchpriority=\"high\"" if eager else "loading=\"lazy\" decoding=\"async\""} width="1200" height="900">'
 
 HCALL = '<a class="btn btn-glass h-call" href="tel:+17542089268"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.6a1 1 0 0 1-.25 1z"/></svg><span class="long">(754) 208-9268</span><span class="short">Call</span></a>'
 
@@ -78,7 +78,7 @@ SVC_LINKS = ''.join(f'<a href="/{u}">{t}</a>' for u, t in SVC_NAV)
 
 def foot(wa):
     return f'''<div class="ffs-foot"><div class="wrap">
-<div><a class="logo" href="/" aria-label="Back to home"><img src="{B}img/logo.png" alt="Florida Fence Solution" width="69" height="44" loading="lazy"></a><p>Family-owned fence contractor in Broward County, FL.<br>1331 N 70th Way, Hollywood, FL 33024. Hablamos espa&#241;ol.</p></div>
+<div><a class="logo" href="/" aria-label="Back to home"><img src="{B}img/logo.png" alt="Florida Fence Solution" width="69" height="44" loading="lazy" decoding="async"></a><p>Family-owned fence contractor in Broward County, FL.<br>1331 N 70th Way, Hollywood, FL 33024. Hablamos espa&#241;ol.</p></div>
 <div><h4>Contact</h4><a href="tel:+17542089268">(754) 208-9268</a><a href="https://wa.me/17542089268" target="_blank" rel="noopener">WhatsApp</a><a href="mailto:floresfloridafencing@gmail.com">Email</a></div>
 <div><h4>Services</h4>{SVC_LINKS}</div>
 <div><h4>Hours</h4><p>Mon&#8211;Sat<br>8 AM&#8211;6 PM</p></div>
@@ -146,7 +146,7 @@ for c in C:
     html = html.encode('ascii', 'xmlcharrefreplace').decode()
     assert html.count('<div') == html.count('</div'), c['slug']
     open(f'cities/{c["slug"]}.html', 'w').write(html)
-    meta.append(dict(slug=f'fence-company-{c["slug"]}-fl', title=f'Fence Company in {c["name"]}, FL | Florida Fence Solution',
+    meta.append(dict(slug=f'fence-company-{c["slug"]}-fl', title=(t if len(t := f'Fence Company in {c["name"]}, FL | Florida Fence Solution') <= 60 else t.replace(' in ', ' ', 1)),
         desc=f'Licensed & insured fence contractor in {c["name"]}, FL. Wood, PVC vinyl, aluminum, chain-link & Durafence. Permits & HOA handled. Free estimate: (754) 208-9268.'))
 json.dump(meta, open('cities/meta.json', 'w'), indent=1)
 open('cities/preview.html','w').write('<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"></head><body style="margin:0">'+open('cities/hollywood.html').read()+'</body></html>')

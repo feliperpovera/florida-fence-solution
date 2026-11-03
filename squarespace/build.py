@@ -163,7 +163,7 @@ h = re.sub(r'<iframe title="Map:.*?</iframe>\s*', '', h, flags=re.S)
 m = re.search(r'<div class="map-block reveal">\s*(<div class="map-card">.*?</a>\s*</div>)\s*</div>', h, flags=re.S)
 STATIC = ('<a class="map-static" href="https://maps.google.com/?cid=273622298774698385" target="_blank" rel="noopener" aria-label="Open Florida Fence Solution in Google Maps">'
           '<picture><source media="(max-width:767px)" srcset="img/map-hollywood-mobile.webp">'
-          '<img src="img/map-hollywood.webp" srcset="img/map-hollywood.webp 1280w, img/map-hollywood-2560.webp 2560w" sizes="(max-width:1280px) 100vw, 1280px" width="1280" height="420" loading="lazy" alt="Map: Florida Fence Solution, 1331 N 70th Way, Hollywood, FL 33024"></picture>'
+          '<img src="img/map-hollywood.webp" srcset="img/map-hollywood.webp 1280w, img/map-hollywood-2560.webp 2560w" sizes="(max-width:1280px) 100vw, 1280px" width="1280" height="420" loading="lazy" decoding="async" alt="Map: Florida Fence Solution, 1331 N 70th Way, Hollywood, FL 33024"></picture>'
           '<span class="osm">&#169; OpenStreetMap contributors</span></a>')
 card = m.group(1); h = h[:m.start()] + STATIC + h[m.end():]
 h = h.replace('<section id="faq"', '@@CUT@@<div class="map-over"><div class="wrap">' + card + '</div></div><div class="map-after"></div><section id="faq"', 1)

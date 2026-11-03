@@ -48,7 +48,7 @@ REVIEWS = [
 
 POSTS = [
  dict(slug='how-to-clean-a-fence-in-florida', hero='pvc', tag='Maintenance', date='October 20, 2026',
-  title='How to Clean a Fence in South Florida (Vinyl, Wood, Aluminum) | Florida Fence Solution',
+  title='How to Clean a Fence in Florida | Florida Fence Solution',
   desc='How to clean vinyl, wood, aluminum and chain-link fences in South Florida: mold, mildew and green algae, step by step. Tips from a Broward fence contractor.',
   h1='How to clean a fence in South Florida <em>without damaging it.</em>',
   sub='Humidity, rain and shade turn fences green fast. Here is how to clean each material the right way.',
@@ -72,7 +72,7 @@ POSTS = [
   faq=[('Can I use bleach on a vinyl fence?', 'A diluted solution can remove tough mildew, but test it first, protect your plants and rinse thoroughly. Vinegar and water or a vinyl fence cleaner are gentler options.'),
        ('Will pressure washing damage my fence?', 'High pressure up close can etch vinyl and splinter wood. Use a low setting, a wide fan tip and keep the nozzle at a distance.')]),
  dict(slug='fence-permit-broward-county', hero='alley', tag='Permits', date='October 20, 2026',
-  title='Do You Need a Fence Permit in Broward County? | Florida Fence Solution',
+  title='Broward County Fence Permits | Florida Fence Solution',
   desc='Do you need a permit to build a fence in Broward County, FL? What cities usually ask for, HOA approval, inspections and how long it takes. Explained by a local fence contractor.',
   h1='Do you need a fence permit <em>in Broward County?</em>',
   sub='Short answer: almost always. Here is what the permit involves and how we handle it for you.',
@@ -94,7 +94,7 @@ POSTS = [
   faq=[('Can I build a fence without a permit in Broward?', 'You risk fines, a stop-work order or having to remove the fence, and it can cause issues when you sell the home. We always pull the permit.'),
        ('Do I need a permit to replace an old fence?', 'In most Broward cities, yes. Replacing an entire fence is treated like new construction.')]),
  dict(slug='best-hurricane-fence-south-florida', hero='alu', tag='Hurricanes', date='October 20, 2026',
-  title='Best Fence for Hurricanes in South Florida | Florida Fence Solution',
+  title='Best Hurricane Fence in Florida | Florida Fence Solution',
   desc='Which fence holds up best in South Florida hurricanes? Aluminum, Durafence, PVC vinyl, wood and chain-link compared by a Broward fence contractor.',
   h1='The best fence for hurricanes <em>in South Florida.</em>',
   sub='No fence is storm-proof, but some materials and build methods handle hurricane season far better.',
@@ -119,7 +119,7 @@ POSTS = [
   faq=[('What is the most hurricane-resistant privacy fence?', 'Aluminum privacy systems like Durafence are among the strongest options for privacy in high wind.'),
        ('Should I remove fence panels before a hurricane?', 'Generally no. Secure loose items and gates. A properly installed fence is built to stay in place.')]),
  dict(slug='wood-vs-vinyl-vs-aluminum-fence-florida', hero='wood', tag='Materials', date='October 20, 2026',
-  title='Wood vs Vinyl vs Aluminum Fence in Florida | Florida Fence Solution',
+  title='Wood vs Vinyl vs Aluminum Fence | Florida Fence Solution',
   desc='Wood vs vinyl (PVC) vs aluminum fence in South Florida: cost, lifespan, maintenance, privacy and hurricane performance compared.',
   h1='Wood vs vinyl vs aluminum: <em>which fence fits your Florida home?</em>',
   sub='A straight comparison from a Broward fence contractor who installs all three.',
@@ -162,7 +162,7 @@ POSTS = [
 
 PAGES = [
  dict(slug='residential-fence-solutions', nav='Residential Fence Solutions', hero='louver', kicker='Fences &#183; South Florida',
-  title='Residential & Custom Fence Solutions in South Florida | Florida Fence Solution',
+  title='Residential Fences, South Florida | Florida Fence Solution',
   desc='Residential and custom fence solutions in Broward County and South Florida: PVC vinyl, aluminum, Durafence, wood and chain-link. Free estimate: (754) 208-9268.',
   h1='Residential fence solutions <em>for South Florida homes.</em>',
   sub='Privacy, pool safety, security or curb appeal: we design, permit and install the right fence for your home.',
@@ -172,11 +172,11 @@ PAGES = [
 <p>Not every yard fits a catalog. We build custom gates, mixed-material fences (for example aluminum in front and PVC privacy in back), horizontal designs, ranch-style runs for large lots and pool barriers that match the rest of the fence.</p>
 <h2>How to choose</h2>
 <p>Want privacy with no maintenance? PVC vinyl. Near the water or around a pool? Aluminum or Durafence. Tight budget? Wood or chain-link. Read our full <a href="/wood-vs-vinyl-vs-aluminum-fence-florida">wood vs vinyl vs aluminum comparison</a> or the guide to the <a href="/best-hurricane-fence-south-florida">best fence for hurricanes</a>.</p>
-<div class="cat-grid" style="margin-top:24px">{''.join(f'<figure class="slide"><a href="/{s["slug"]}"><img src="{CAT}{s["gal"][0][0]}-sm.webp" alt="{s["tag"]} fence by Florida Fence Solution" loading="lazy" width="640" height="480"></a><figcaption>{s["tag"]} fences</figcaption></figure>' for s in S)}</div>''',
+<div class="cat-grid" style="margin-top:24px">{''.join(f'<figure class="slide"><a href="/{s["slug"]}"><img src="{CAT}{s["gal"][0][0]}-sm.webp" alt="{s["tag"]} fence by Florida Fence Solution" loading="lazy" decoding="async" width="640" height="480"></a><figcaption>{s["tag"]} fences</figcaption></figure>' for s in S)}</div>''',
   faq=[('Do you install fences for businesses too?', 'Yes. Most of our work is residential, but we also install chain-link, aluminum and privacy fences for businesses and lots.'),
        ('Do you offer custom gates?', 'Yes. Walk gates, double driveway gates and custom metal gates.')]),
  dict(slug='fence-company-reviews', nav='Fence Company Reviews', hero='crew', kicker='Reviews &#183; 5.0 on Google',
-  title='Florida Fence Solution Reviews | 5-Star Fence Company in Broward',
+  title='Florida Fence Solution Reviews | 5-Star Broward Fencing',
   desc='Read Google reviews of Florida Fence Solution, a family-owned fence company in Hollywood serving Fort Lauderdale and all of Broward County. 5.0 stars.',
   h1='5.0 stars on Google. <em>Every single review.</em>',
   sub='What homeowners in Hollywood, Fort Lauderdale and across Broward say about working with our family business.',
@@ -189,7 +189,7 @@ PAGES = [
   faq=[('Is Florida Fence Solution licensed and insured?', 'Yes. We are licensed and insured, family-owned and based in Hollywood, FL.'),
        ('Where can I leave a review?', 'On our Google Business Profile. We read every one.')]),
  dict(slug='fence-installation-process', nav='Fence Installation Process', hero='alley', kicker='Process &#183; Quote to inspection',
-  title='Fence Installation Process in Broward County | Florida Fence Solution',
+  title='Fence Installation Process | Florida Fence Solution',
   desc='How fence installation works with Florida Fence Solution: free estimate, design, permit and HOA, 1-3 day install and final city inspection in Broward County.',
   h1='From free quote <em>to final inspection.</em>',
   sub='Four clear steps. We handle the permit, the HOA paperwork and the city inspection.',
@@ -206,7 +206,7 @@ PAGES = [
   faq=[('Do I need to be home during installation?', 'Not the whole time. We need access to the yard and to talk with you at the start and at the final walkthrough.'),
        ('Do you remove the old fence?', 'Yes. We can remove and haul away your old fence as part of the job.')]),
  dict(slug='service-areas', nav='Service Areas', hero='chain', kicker='Areas &#183; Broward County',
-  title='Fence Contractor in South Florida & Broward County | Service Areas',
+  title='Fence Service Areas in Broward & South Florida',
   desc='Local fence contractor serving South Florida: Hollywood, Fort Lauderdale, Pembroke Pines, Miramar, Davie, Weston, Coral Springs, Plantation, Miami Gardens and all of Broward.',
   h1='Your local fence contractor <em>in South Florida.</em>',
   sub='Based in Hollywood, FL. Serving all of Broward County, plus Miami Gardens.',
@@ -214,12 +214,12 @@ PAGES = [
 <h2>Cities with local pages</h2><div class="city-list">{''.join(f'<a href="{u}">Fence company in {n}</a>' for n, u in CITY.items())}</div>
 <h2>We also serve</h2><div class="city-list">{''.join(f'<span>{n}</span>' for n in ['Parkland', 'Sunrise', 'Cooper City', 'Southwest Ranches', 'Lauderhill', 'Pompano Beach', 'Deerfield Beach'])}</div>
 <p style="margin-top:16px">Not on the list? If you are in Broward County or nearby, call us at <a href="tel:+17542089268">(754) 208-9268</a>.</p>
-<a class="map-static" href="https://maps.google.com/?cid=273622298774698385" target="_blank" rel="noopener" aria-label="Open Florida Fence Solution in Google Maps"><img src="{B}img/map-hollywood.webp" srcset="{B}img/map-hollywood.webp 1280w, {B}img/map-hollywood-2560.webp 2560w" sizes="(max-width:1280px) 100vw, 1280px" width="1280" height="420" loading="lazy" alt="Map: Florida Fence Solution, 1331 N 70th Way, Hollywood, FL 33024"></a>
+<a class="map-static" href="https://maps.google.com/?cid=273622298774698385" target="_blank" rel="noopener" aria-label="Open Florida Fence Solution in Google Maps"><img src="{B}img/map-hollywood.webp" srcset="{B}img/map-hollywood.webp 1280w, {B}img/map-hollywood-2560.webp 2560w" sizes="(max-width:1280px) 100vw, 1280px" width="1280" height="420" loading="lazy" decoding="async" alt="Map: Florida Fence Solution, 1331 N 70th Way, Hollywood, FL 33024"></a>
 <p class="meta">Map data &#169; OpenStreetMap contributors</p>''',
   faq=[('Do you charge extra to travel?', 'Not within Broward County. Estimates are free.'),
        ('Do you work in Miami-Dade?', 'We serve Miami Gardens and nearby areas close to our Hollywood shop.')]),
  dict(slug='fence-faq', nav='Fence FAQ', hero='wood', kicker='FAQ &#183; Straight answers',
-  title='Fence FAQ: Cost, Permits, Materials & Installation | Florida Fence Solution',
+  title='Fence FAQ: Cost, Permits, Materials | Florida Fence Solution',
   desc='Answers to common fence questions in Broward County: permits, HOA, installation time, best materials for Florida, pool fences, repairs and estimates.',
   h1='Fence questions, <em>straight answers.</em>',
   sub='Everything Broward homeowners ask us before installing a fence.',
@@ -265,7 +265,7 @@ def gpage(p, extra=''):
 </div>'''
 
 BLOG = dict(slug='blog', nav='Blog', hero='crew', kicker='Blog &#183; Fence guides',
-  title='Fence Blog: Guides for South Florida Homeowners | Florida Fence Solution',
+  title='South Florida Fence Blog | Florida Fence Solution',
   desc='Fence guides for South Florida homeowners: permits in Broward, pool fence rules, hurricane-ready fences, cleaning and choosing materials.',
   h1='Fence guides <em>for South Florida homeowners.</em>',
   sub='Practical answers from a family-owned Broward fence contractor.',
