@@ -5,7 +5,15 @@ B = 'https://feliperpovera.github.io/florida-fence-solution/'
 css = open('block-a.html').read()
 css = css[:css.index('</style>') + 8]
 # city pages have no Squarespace form/map blocks; keep code blocks full width
-css = css.replace('</style>', '.fe-block:has(.ffs){order:0!important}\n.ffs .city-hero{min-height:72svh}\n.ffs .near a{display:inline-block;margin:4px 6px 4px 0;padding:8px 14px;border-radius:999px;background:var(--light-2);font-weight:600;font-size:.92rem;text-decoration:none}\n.ffs .near a:hover{background:var(--accent)}\n.ffs .prose p{color:var(--muted);margin-bottom:14px;max-width:70ch}\n.ffs .prose p a{text-decoration:underline;text-decoration-color:var(--accent);text-underline-offset:3px}\n.ffs .prose h3{margin:22px 0 8px}\n.ffs .price li{margin:0 0 8px 18px;color:var(--muted)}\n</style>')
+css = css.replace('</style>', '.fe-block:has(.ffs){order:0!important}\n.ffs .city-hero{min-height:72svh}\n.ffs .near a{display:inline-block;margin:4px 6px 4px 0;padding:8px 14px;border-radius:999px;background:var(--light-2);font-weight:600;font-size:.92rem;text-decoration:none}\n.ffs .near a:hover{background:var(--accent)}\n.ffs .prose p{color:var(--muted);margin-bottom:14px;max-width:70ch}\n.ffs .prose p a{text-decoration:underline;text-decoration-color:var(--accent);text-underline-offset:3px}\n.ffs .prose h3{margin:22px 0 8px}\n.ffs .price li{margin:0 0 8px 18px;color:var(--muted)}\n.ffs .tscroll{overflow-x:auto;margin:8px 0 18px}\n.ffs .ftable{width:100%;min-width:520px;border-collapse:collapse;font-size:.95rem}\n.ffs .ftable th,.ffs .ftable td{text-align:left;vertical-align:top;padding:10px 12px;border-bottom:1px solid var(--light-2)}\n.ffs .ftable td{color:var(--muted)}\n</style>')
+
+def table(head, rows):
+    return ('<div class="tscroll"><table class="ftable"><thead><tr>' + ''.join(f'<th>{h}</th>' for h in head) + '</tr></thead><tbody>'
+            + ''.join('<tr>' + ''.join(f'<td>{x}</td>' for x in r) + '</tr>' for r in rows) + '</tbody></table></div>')
+
+def more(kicker, h2, parts):
+    body = ''.join(p if p.startswith('<') else f'<p>{p}</p>' for p in parts)
+    return f'<section id="local-guide"><div class="wrap"><div class="prose" style="max-width:860px"><span class="kicker">{kicker}</span><h2>{h2}</h2>{body}</div></div></section>'
 
 IMG = {
  'pvc': 'img/white-pvc-privacy-fence-backyard-pool', 'wood': 'img/horizontal-pine-wood-fence',
@@ -17,12 +25,48 @@ C = [
       angle='Hollywood is our home base. Our shop is on N 70th Way, so most Hollywood estimates happen the same week you call.',
       local='Near the beach, salt air eats through untreated steel and cheap hardware fast. East of US-1 we usually recommend aluminum or PVC with stainless fasteners; west of I-95, wood and shadowbox privacy fences are just as popular.',
       faq=[('Do I need a permit for a fence in Hollywood, FL?','Yes. Most new fences in Hollywood need a permit from the city\'s building department. We prepare the drawings, file the permit and schedule the final inspection for you.'),
-           ('How fast can you start in Hollywood?','Hollywood is our home base, so estimates are usually within a few days. Install starts once the permit is approved.')]),
+           ('How fast can you start in Hollywood?','Hollywood is our home base, so estimates are usually within a few days. Install starts once the permit is approved.'),
+           ('Where is your shop in Hollywood?','1331 N 70th Way, Hollywood, FL 33024. We are open Monday to Saturday, 8 AM to 6 PM. Call (754) 208-9268 to book a free on-site estimate.')],
+      desc='Fence company in Hollywood, FL with a local shop on N 70th Way. Wood, PVC, aluminum, chain-link & Durafence. Permits handled. Free estimate: (754) 208-9268.',
+      more=more('Hollywood fence guide', 'Your local fencing contractor in Hollywood, FL', [
+        'Looking for fencing contractors in Hollywood? Florida Fence Solution is a licensed and insured, family-owned fence company with its shop at 1331 N 70th Way, Hollywood, FL 33024. We measure, quote, permit and install with our own crew, and we are open Monday to Saturday, 8 AM to 6 PM.',
+        '<h3>Which fence fits your part of Hollywood</h3>',
+        table(['Area', 'What we usually recommend', 'Why'], [
+          ['East of US-1, near the beach', 'Aluminum, Durafence or PVC vinyl with stainless hardware', 'Salt air rusts plain steel and cheap fasteners quickly.'],
+          ['Hollywood Lakes, Emerald Hills', 'PVC privacy fences, aluminum pool fences, horizontal styles', 'Privacy for backyards and pool barriers with self-closing gates.'],
+          ['West of I-95, Hollywood Hills', 'Wood shadowbox or board-on-board, PVC, chain-link replacements', 'Larger yards where cost per foot matters more.'],
+          ['Commercial lots', 'Black chain-link, aluminum, lockable gates', 'Security at a lower cost per foot.']]),
+        '<h3>Permits with the City of Hollywood</h3>',
+        'Most new and replacement fences in Hollywood need a building permit from the city. Broward is part of Florida\'s High-Velocity Hurricane Zone, so post depth, concrete footings and panel systems matter. We prepare the drawings, file the permit, deal with your HOA paperwork if you have one and schedule the final inspection. More on <a href="/fence-permit-broward-county">fence permits in Broward County</a>.',
+        '<h3>Repairs, not just new fences</h3>',
+        'Leaning posts, a gate that won\'t latch or a few panels lost in a storm don\'t always mean a new fence. See our <a href="/fence-repair">fence repair service</a>. Not sure which material to pick? Read <a href="/wood-vs-vinyl-vs-aluminum-fence-florida">wood vs. vinyl vs. aluminum in Florida</a>.',
+        '<h3>What affects the price in Hollywood</h3>',
+        'Linear feet, height, material and style, the number of gates and whether an old fence has to come out. Every estimate is free and in writing after we measure on site, with permit, materials, labor and cleanup included.'])),
  dict(slug='fort-lauderdale', name='Fort Lauderdale', hero='louver', hoods='Victoria Park, Coral Ridge, Rio Vista, Tarpon River, Imperial Point and Riverland',
       angle='From waterfront homes on the canals to commercial lots off Broward Blvd, we build fences that pass inspection and handle coastal weather.',
       local='Many Fort Lauderdale homes sit on canals and close to the ocean, so we favor aluminum, Durafence and PVC that won\'t rust, and we set posts deeper in sandy soil. Damaged fence? See <a href="/fence-repair-fort-lauderdale-fl">fence repair in Fort Lauderdale</a>.',
       faq=[('What fence holds up best near the water in Fort Lauderdale?','Aluminum and Durafence don\'t rust and handle salt air. PVC vinyl is also a good low-maintenance option for privacy.'),
-           ('Do you install pool fences in Fort Lauderdale?','Yes. We install pool safety fences and self-closing gates built to Florida pool barrier requirements.')]),
+           ('Do you install pool fences in Fort Lauderdale?','Yes. We install pool safety fences and self-closing gates built to Florida pool barrier requirements.'),
+           ('Who issues fence permits in Fort Lauderdale?','Inside city limits, the City of Fort Lauderdale issues the building permit, not Broward County. We prepare the drawings, file the permit and schedule the final inspection.'),
+           ('How long does a fence installation take in Fort Lauderdale?','Most residential fences take 1 to 3 days to install once the permit is approved. The permit and any HOA approval usually take longer than the install itself.')],
+      desc='Fence company in Fort Lauderdale, FL: aluminum, Durafence, PVC, wood & chain-link for canal-front homes. Permits handled. Free estimate: (754) 208-9268.',
+      more=more('Fort Lauderdale fence guide', 'How to choose a fence company in Fort Lauderdale', [
+        'Florida Fence Solution is a licensed and insured, family-owned fence contractor based just south of Fort Lauderdale, in Hollywood. We install aluminum, Durafence, PVC vinyl, wood and chain-link fences across Fort Lauderdale with our own crew, pull the permit with the city and schedule the final inspection. Whoever you hire, ask three things: who pulls the permit, who actually builds the fence, and what the written quote includes.',
+        '<h3>Which fence holds up best in Fort Lauderdale</h3>',
+        table(['Material', 'Best for', 'Keep in mind'], [
+          ['Aluminum (picket)', 'Canal and waterfront homes, pool barriers, keeping the water view', 'Does not rust in salt air. Open design, so no privacy.'],
+          ['Durafence (aluminum privacy)', 'Privacy near the water, modern horizontal looks', 'Metal strength with a solid privacy look. Higher cost than PVC.'],
+          ['PVC vinyl', 'Backyard privacy in Victoria Park, Coral Ridge and Imperial Point', 'No painting. We install UV-stabilized panels made for Florida sun.'],
+          ['Wood (pressure-treated pine)', 'Lowest up-front cost for full privacy', 'Needs sealing every couple of years; lasts about 10 to 15 years here.'],
+          ['Black chain-link', 'Commercial lots, side yards, budget security', 'Add privacy slats if you want to block the view.']]),
+        '<h3>Permits and inspections</h3>',
+        'Fences inside Fort Lauderdale city limits are permitted by the City of Fort Lauderdale. Broward County is part of Florida\'s High-Velocity Hurricane Zone, so the city looks at post depth, footings and the panel system. We prepare the drawings, file the permit, follow up with the city and book the final inspection, and we include the permit in the written quote. More on <a href="/fence-permit-broward-county">fence permits in Broward County</a>.',
+        '<h3>Canal-front and waterfront lots</h3>',
+        'Rio Vista, Coral Ridge, Riverland and the Las Olas isles have sandy soil and a high water table. We set posts deeper in concrete there and use stainless or galvanized hardware so nothing bleeds rust. For pools, we build barriers with self-closing, self-latching gates; see <a href="/pool-fence-requirements-florida">pool fence requirements in Florida</a>.',
+        '<h3>Already have a fence that needs work?</h3>',
+        'Leaning posts, broken panels, sagging gates and storm damage are often cheaper to repair than to replace. See <a href="/fence-repair-fort-lauderdale-fl">fence repair in Fort Lauderdale</a>.',
+        '<h3>What affects the price</h3>',
+        'Linear feet and height, the material and style, the number and size of gates, removal of an old fence and access on the lot. Every estimate is free and in writing after we measure on site. To compare materials first, read <a href="/wood-vs-vinyl-vs-aluminum-fence-florida">wood vs. vinyl vs. aluminum in Florida</a> or <a href="/best-hurricane-fence-south-florida">the best hurricane fence for South Florida</a>.'])),
  dict(slug='pembroke-pines', name='Pembroke Pines', hero='pvc', hoods='Chapel Trail, Silver Lakes, Pembroke Falls, Pembroke Lakes and Towngate',
       angle='Pembroke Pines has a lot of HOA communities. We work with your HOA guidelines from the start so your fence gets approved the first time.',
       local='Most Pembroke Pines HOAs specify fence height, color and style. White PVC privacy fences and aluminum are the most common approved options here.',
@@ -125,7 +169,7 @@ def page(c):
 <li><span class="n" aria-hidden="true">2</span><div><h3>Permits and HOA, handled</h3><p>We file with {n} and build to code.</p></div></li>
 <li><span class="n" aria-hidden="true">3</span><div><h3>Our own crew</h3><p>No random subs. We clean up before we leave.</p></div></li></ol>
 </div></div></section>
-
+{c.get('more', '')}
 <section id="faq" class="dark" style="padding-top:0"><div class="wrap faq-grid">
 <div><span class="kicker">FAQ</span><h2>Fence questions in {n}</h2></div>
 <div class="faq">{faqs}</div></div></section>
@@ -147,7 +191,7 @@ for c in C:
     assert html.count('<div') == html.count('</div'), c['slug']
     open(f'cities/{c["slug"]}.html', 'w').write(html)
     meta.append(dict(slug=f'fence-company-{c["slug"]}-fl', title=(t if len(t := f'Fence Company in {c["name"]}, FL | Florida Fence Solution') <= 60 else t.replace(' in ', ' ', 1)),
-        desc=f'Licensed & insured fence contractor in {c["name"]}, FL. Wood, PVC vinyl, aluminum, chain-link & Durafence. Permits & HOA handled. Free estimate: (754) 208-9268.'))
+        desc=c.get('desc') or f'Licensed & insured fence contractor in {c["name"]}, FL. Wood, PVC vinyl, aluminum, chain-link & Durafence. Permits & HOA handled. Free estimate: (754) 208-9268.'))
 json.dump(meta, open('cities/meta.json', 'w'), indent=1)
 open('cities/preview.html','w').write('<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"></head><body style="margin:0">'+open('cities/hollywood.html').read()+'</body></html>')
 print([len(open(f'cities/{c["slug"]}.html').read()) for c in C])
