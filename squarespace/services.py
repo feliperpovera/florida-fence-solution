@@ -69,7 +69,8 @@ S = [
       sub='Leaning posts, broken panels, sagging gates and storm damage. We repair wood, PVC, aluminum and chain-link fences.',
       h2='Fix it right instead of replacing it all',
       body=['Most damaged fences don\'t need a full replacement. After a storm or years of sun and rain, the usual problems are a few broken panels, rotten or leaning posts and gates that no longer close. We replace only what is needed and match the existing material.',
-            'We repair wood, PVC vinyl, aluminum, Durafence and chain-link fences, reset posts in concrete and rehang or replace gates and hardware. If a repair won\'t last, we tell you and quote a replacement instead.'],
+            'We repair wood, PVC vinyl, aluminum, Durafence and chain-link fences, reset posts in concrete and rehang or replace gates and hardware. If a repair won\'t last, we tell you and quote a replacement instead.',
+            'Near the coast? See our <a href="/fence-repair-fort-lauderdale-fl">fence repair in Fort Lauderdale</a> page for canal-front and salt-air repairs.'],
       styles=['Storm damage', 'Leaning or rotten posts', 'Broken panels &amp; pickets', 'Sagging gates', 'Gate hardware &amp; latches', 'Pool gate repairs'],
       gal=[('wood/wood-shadowbox-with-gate-03', 'Wood gate rebuilt'), ('pvc/pvc-standard-pvc-gate-06', 'PVC gate'), ('aluminum/aluminum-durafence-with-gate-03', 'Durafence with gate'), ('chain-link/chain-link-black-chain-link-02', 'Chain-link')],
       cost=['Number of posts and panels to replace', 'Material: wood, PVC, aluminum or chain-link', 'Gate repair or replacement', 'Matching discontinued styles'],
@@ -80,20 +81,21 @@ S = [
 ]
 
 def spage(s):
+    area = s.get('area', 'Broward County')
     wa = "https://wa.me/17542089268?text=" + ("Hi! I'd like a free estimate for " + s['tag'].lower() + " fence work.").replace(' ', '%20')
-    gal = ''.join(f'<figure class="slide"><a href="{CAT}{f}.webp" target="_blank" rel="noopener"><img src="{CAT}{f}-sm.webp" alt="{cap} by Florida Fence Solution in Broward County" loading="lazy" decoding="async" width="640" height="480"></a><figcaption>{cap}</figcaption></figure>' for f, cap in s['gal'])
+    gal = ''.join(f'<figure class="slide"><a href="{CAT}{f}.webp" target="_blank" rel="noopener"><img src="{CAT}{f}-sm.webp" alt="{cap} by Florida Fence Solution in {area}" loading="lazy" decoding="async" width="640" height="480"></a><figcaption>{cap}</figcaption></figure>' for f, cap in s['gal'])
     chips = ''.join(f'<li>{x}</li>' for x in s['styles'])
     faqs = ''.join(f'<details><summary>{q}</summary><p>{a}</p></details>' for q, a in s['faq'] + [
         ('Are you licensed and insured?', 'Yes. Florida Fence Solution is licensed and insured, family-owned and based in Hollywood, FL.')])
     others = ''.join(f'<a href="/{u}">{t}</a>' for u, t in SVC_NAV if u != s['slug'])
     cities = ''.join(f'<a href="/fence-company-{c["slug"]}-fl">{c["name"]}</a>' for c in C)
-    body = ''.join(f'<p>{p}</p>' for p in s['body'])
+    body = ''.join(p if p.startswith('<') else f'<p>{p}</p>' for p in s['body'])
     cost = ''.join(f'<li>{x}</li>' for x in s['cost'])
     return f'''<div class="ffs">
 {HEAD}
-<section class="hero city-hero">{img(s['hero'], eager=True).replace('alt=""', f'alt="{s["tag"]} fence installed by Florida Fence Solution in Broward County"')}
+<section class="hero city-hero">{img(s['hero'], eager=True).replace('alt=""', f'alt="{s["tag"]} fence {s.get("alt_verb", "installed")} by Florida Fence Solution in {area}"')}
 <div class="wrap"><div class="hero-copy">
-<span class="kicker">{s['tag']} fences &#183; Broward County, FL</span>
+<span class="kicker">{s.get('kicker', s['tag'] + ' fences &#183; Broward County, FL')}</span>
 <h1>{s['h1']}</h1>
 <p class="sub">{s['sub']}</p>
 <div class="ctas"><a class="btn btn-accent" href="/#estimate">Get a free estimate <span class="arr" aria-hidden="true">&#8594;</span></a><a class="btn btn-glass" href="tel:+17542089268">Call (754) 208-9268</a></div>
@@ -127,16 +129,59 @@ def spage(s):
 <div class="near"><span class="kicker">More services</span><h3 style="margin-bottom:12px">We also install</h3>{others}<h3 style="margin:20px 0 12px">Areas we serve</h3>{cities}</div>
 </div></section>
 
-{foot(wa)}
+{foot(wa)}{s.get('ld', '')}
 </div>'''
+
+# Service x city landing pages (same template as S; not listed in SVC_NAV or S so other pages' nav stays the same).
+SITE = 'https://www.floridafencesolution.com'
+def ld(s, city):
+    strip = lambda t: re.sub('<[^>]+>', '', t)
+    faq = s['faq'] + [('Are you licensed and insured?', 'Yes. Florida Fence Solution is licensed and insured, family-owned and based in Hollywood, FL.')]
+    biz = {'@type': 'HomeAndConstructionBusiness', '@id': SITE + '/#business', 'name': 'Florida Fence Solution LLC', 'url': SITE + '/', 'telephone': '+1-754-208-9268',
+           'address': {'@type': 'PostalAddress', 'streetAddress': '1331 N 70th Way', 'addressLocality': 'Hollywood', 'addressRegion': 'FL', 'postalCode': '33024', 'addressCountry': 'US'}}
+    svc = {'@context': 'https://schema.org', '@type': 'Service', 'name': strip(s['h1']).split(' after')[0].strip(), 'serviceType': 'Fence repair',
+           'url': f'{SITE}/{s["slug"]}', 'provider': biz, 'areaServed': {'@type': 'City', 'name': city + ', FL'}}
+    fq = {'@context': 'https://schema.org', '@type': 'FAQPage', 'mainEntity': [{'@type': 'Question', 'name': q, 'acceptedAnswer': {'@type': 'Answer', 'text': strip(a)}} for q, a in faq]}
+    return ''.join(f'\n<script type="application/ld+json">{json.dumps(x, ensure_ascii=False)}</script>' for x in (svc, fq))
+
+L = [
+ dict(slug='fence-repair-fort-lauderdale-fl', ag='Fence Repair', hero='louver', tag='Repair', area='Fort Lauderdale, FL', alt_verb='repaired',
+      kicker='Fence repair &#183; Fort Lauderdale, FL',
+      title='Fence Repair in Fort Lauderdale, FL | Florida Fence Solution',
+      desc='Fence repair in Fort Lauderdale, FL: leaning posts, broken panels, sagging gates and storm damage on wood, PVC, aluminum & chain-link. Call (754) 208-9268.',
+      h1='Fence repair in Fort Lauderdale, FL <em>after storms, salt air and wear.</em>',
+      sub='Leaning posts, broken panels, gates that won\'t latch and storm damage. We repair wood, PVC vinyl, aluminum, Durafence and chain-link fences across Fort Lauderdale.',
+      h2='Fort Lauderdale fence repair, done to last',
+      body=['Fort Lauderdale is hard on fences. Canal-front lots, sandy soil, salt air and hurricane season all work against posts, panels and hardware. Most damaged fences we see here don\'t need a full replacement: a few posts have shifted, some panels cracked in the wind or a gate dropped and stopped closing. We repair what is broken, match the material you already have and leave the rest of the fence alone.',
+            '<h3>Posts</h3>',
+            'A leaning fence almost always starts at the post. Wood posts rot at the ground line, and posts set too shallow in sandy soil move after heavy rain or wind. We dig out the failed post, set a new one in concrete and go deeper where the ground is soft, which is common near the Intracoastal and the canals in Coral Ridge, Rio Vista and Riverland.',
+            '<h3>Panels and pickets</h3>',
+            'Broken pickets, cracked PVC vinyl panels, bent aluminum sections and torn chain-link mesh can usually be replaced one section at a time. We match white or tan PVC, picket and Durafence aluminum, pressure-treated pine and black or galvanized chain-link so the repair blends in with the existing fence.',
+            '<h3>Gates</h3>',
+            'Gates take the most abuse. Sagging gates, dragging gates, worn hinges and broken latches are some of our most common repair calls in Victoria Park, Tarpon River and Imperial Point. We rehang or rebuild the gate, reinforce the gate post and replace the hardware. On pool fences, we restore self-closing, self-latching gates so the barrier works the way Florida pool safety rules require.',
+            '<h3>Storm damage</h3>',
+            'After a hurricane or a strong storm, we repair blown-out panels, snapped or leaning posts and damaged gates, and we can document the damage for your insurance claim. If a section was built with shallow posts or weak panels, we fix the cause, not just the part that fell, so it holds up better next season.',
+            '<h3>Repair or replace?</h3>',
+            'If most posts are rotten or the fence is past its life, a repair won\'t last and replacing it costs less long term. We tell you honestly after seeing it, and quote both when it makes sense. See our general <a href="/fence-repair">fence repair service</a> for all of Broward County, or our <a href="/fence-company-fort-lauderdale-fl">Fort Lauderdale fence company</a> page if you are planning a new fence.'],
+      styles=['Leaning or rotten posts', 'Broken panels &amp; pickets', 'Sagging gates', 'Gate hinges &amp; latches', 'Pool gate repairs', 'Storm damage', 'Wood, PVC, aluminum &amp; chain-link'],
+      gal=[('wood/wood-shadowbox-with-gate-03', 'Wood gate rebuilt'), ('pvc/pvc-standard-pvc-gate-06', 'PVC gate'), ('aluminum/aluminum-durafence-with-gate-03', 'Durafence with gate'), ('chain-link/chain-link-black-chain-link-02', 'Chain-link')],
+      cost=['Number of posts and panels to replace', 'Material: wood, PVC vinyl, aluminum, Durafence or chain-link', 'Gate repair or full gate replacement', 'Matching an older or discontinued style', 'Soil and access on canal-front lots'],
+      faq=[('Do you repair fences in Fort Lauderdale that you didn\'t install?', 'Yes. We repair any wood, PVC vinyl, aluminum, Durafence or chain-link fence in Fort Lauderdale, no matter who built it.'),
+           ('Can you fix a leaning fence on a canal-front lot?', 'Yes. We reset or replace the posts in concrete and set them deeper in sandy soil so the fence stands straight again.'),
+           ('Do you repair hurricane and storm damage?', 'Yes. We repair panels, posts and gates after storms and can document the damage for your insurance claim.'),
+           ('Can you repair my pool fence gate?', 'Yes. We fix or replace pool gates and hardware so they self-close and self-latch again.'),
+           ('How much does fence repair cost in Fort Lauderdale?', 'It depends on how many posts, panels or gates need work and the material. The estimate is free and in writing after we see the fence.')]),
+]
+for x in L:
+    x['ld'] = ld(x, 'Fort Lauderdale')
 
 os.makedirs('services', exist_ok=True)
 smeta = []
-for s in S:
+for s in S + L:
     html = (css + '\n' + spage(s)).encode('ascii', 'xmlcharrefreplace').decode()
     assert html.count('<div') == html.count('</div'), s['slug']
     open(f'services/{s["slug"]}.html', 'w').write(html)
     smeta.append(dict(slug=s['slug'], ad_group=s['ag'], title=s['title'], desc=s['desc']))
 json.dump(smeta, open('services/meta.json', 'w'), indent=1)
 open('services/preview.html','w').write('<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"></head><body style="margin:0">'+open('services/aluminum-pool-fence-installation.html').read()+'</body></html>')
-print([len(open(f'services/{s["slug"]}.html').read()) for s in S])
+print([len(open(f'services/{s["slug"]}.html').read()) for s in S + L])

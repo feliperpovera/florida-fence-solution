@@ -5,7 +5,7 @@ B = 'https://feliperpovera.github.io/florida-fence-solution/'
 css = open('block-a.html').read()
 css = css[:css.index('</style>') + 8]
 # city pages have no Squarespace form/map blocks; keep code blocks full width
-css = css.replace('</style>', '.fe-block:has(.ffs){order:0!important}\n.ffs .city-hero{min-height:72svh}\n.ffs .near a{display:inline-block;margin:4px 6px 4px 0;padding:8px 14px;border-radius:999px;background:var(--light-2);font-weight:600;font-size:.92rem;text-decoration:none}\n.ffs .near a:hover{background:var(--accent)}\n.ffs .prose p{color:var(--muted);margin-bottom:14px;max-width:70ch}\n.ffs .price li{margin:0 0 8px 18px;color:var(--muted)}\n</style>')
+css = css.replace('</style>', '.fe-block:has(.ffs){order:0!important}\n.ffs .city-hero{min-height:72svh}\n.ffs .near a{display:inline-block;margin:4px 6px 4px 0;padding:8px 14px;border-radius:999px;background:var(--light-2);font-weight:600;font-size:.92rem;text-decoration:none}\n.ffs .near a:hover{background:var(--accent)}\n.ffs .prose p{color:var(--muted);margin-bottom:14px;max-width:70ch}\n.ffs .prose p a{text-decoration:underline;text-decoration-color:var(--accent);text-underline-offset:3px}\n.ffs .prose h3{margin:22px 0 8px}\n.ffs .price li{margin:0 0 8px 18px;color:var(--muted)}\n</style>')
 
 IMG = {
  'pvc': 'img/white-pvc-privacy-fence-backyard-pool', 'wood': 'img/horizontal-pine-wood-fence',
@@ -20,7 +20,7 @@ C = [
            ('How fast can you start in Hollywood?','Hollywood is our home base, so estimates are usually within a few days. Install starts once the permit is approved.')]),
  dict(slug='fort-lauderdale', name='Fort Lauderdale', hero='louver', hoods='Victoria Park, Coral Ridge, Rio Vista, Tarpon River, Imperial Point and Riverland',
       angle='From waterfront homes on the canals to commercial lots off Broward Blvd, we build fences that pass inspection and handle coastal weather.',
-      local='Many Fort Lauderdale homes sit on canals and close to the ocean, so we favor aluminum, Durafence and PVC that won\'t rust, and we set posts deeper in sandy soil.',
+      local='Many Fort Lauderdale homes sit on canals and close to the ocean, so we favor aluminum, Durafence and PVC that won\'t rust, and we set posts deeper in sandy soil. Damaged fence? See <a href="/fence-repair-fort-lauderdale-fl">fence repair in Fort Lauderdale</a>.',
       faq=[('What fence holds up best near the water in Fort Lauderdale?','Aluminum and Durafence don\'t rust and handle salt air. PVC vinyl is also a good low-maintenance option for privacy.'),
            ('Do you install pool fences in Fort Lauderdale?','Yes. We install pool safety fences and self-closing gates built to Florida pool barrier requirements.')]),
  dict(slug='pembroke-pines', name='Pembroke Pines', hero='pvc', hoods='Chapel Trail, Silver Lakes, Pembroke Falls, Pembroke Lakes and Towngate',
