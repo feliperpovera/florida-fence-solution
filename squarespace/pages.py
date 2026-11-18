@@ -277,7 +277,7 @@ os.makedirs('pages', exist_ok=True)
 pmeta = []
 for p in out:
     by = f'<p class="meta">By Florida Fence Solution &#183; {p["date"]}</p>' if 'date' in p else ''
-    html = (css + '\n' + gpage(p, by)).encode('ascii', 'xmlcharrefreplace').decode()
+    html = (css + '\n' + gpage(p, by)).replace('loading="lazy"', 'loading="lazy" fetchpriority="low"').encode('ascii', 'xmlcharrefreplace').decode()
     assert html.count('<div') == html.count('</div'), p['slug']
     open(f'pages/{p["slug"]}.html', 'w').write(html)
     pmeta.append(dict(slug=p['slug'], nav=p['nav'], title=p['title'], desc=p['desc']))

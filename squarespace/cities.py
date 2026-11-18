@@ -107,7 +107,7 @@ C = [
 def img(key, cls='', sizes='100vw', eager=False):
     base = IMG[key]
     big = {'crew': 900, 'louver': 674}.get(key, 1200)
-    mid = '' if key in ('louver', 'crew') else f', {B}{base}-800.webp 800w'
+    mid = {'louver': '', 'crew': f', {B}{base}-700.webp 700w'}.get(key, f', {B}{base}-800.webp 800w')
     return f'<img src="{B}{base}-480.webp" srcset="{B}{base}-480.webp 480w{mid}, {B}{base}.webp {big}w" sizes="{sizes}" alt="" {"fetchpriority=\"high\"" if eager else "loading=\"lazy\" decoding=\"async\""} width="1200" height="900">'
 
 HCALL = '<a class="btn btn-glass h-call" href="tel:+17542089268"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.6a1 1 0 0 1-.25 1z"/></svg><span class="long">(754) 208-9268</span><span class="short">Call</span></a>'
@@ -161,7 +161,7 @@ def page(c):
 </div></div></section>
 
 <section class="why dark"><div class="wrap">
-<div class="why-img">{img('crew','', '(max-width:1024px) 100vw, 45vw').replace('alt=""', 'alt="Florida Fence Solution crew"')}</div>
+<div class="why-img">{img('crew','', '(max-width:1024px) 90vw, 45vw').replace('alt=""', 'alt="Florida Fence Solution crew"')}</div>
 <div class="prose"><span class="kicker">Local know-how</span><h2>Fencing {n} properties the right way</h2>
 <p>{c['local']}</p>
 <p>We handle the permit with the city, follow your HOA rules and build to Florida code, including pool barrier requirements. Free on-site estimates, written quotes and a final walkthrough with you.</p>
@@ -187,7 +187,7 @@ os.makedirs('cities', exist_ok=True)
 meta = []
 for c in C:
     html = css + '\n' + page(c)
-    html = html.encode('ascii', 'xmlcharrefreplace').decode()
+    html = html.replace('loading="lazy"', 'loading="lazy" fetchpriority="low"').encode('ascii', 'xmlcharrefreplace').decode()
     assert html.count('<div') == html.count('</div'), c['slug']
     open(f'cities/{c["slug"]}.html', 'w').write(html)
     meta.append(dict(slug=f'fence-company-{c["slug"]}-fl', title=(t if len(t := f'Fence Company in {c["name"]}, FL | Florida Fence Solution') <= 60 else t.replace(' in ', ' ', 1)),

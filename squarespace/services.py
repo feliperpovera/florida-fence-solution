@@ -126,7 +126,7 @@ def spage(s):
 </div></section>
 
 <section class="why dark"><div class="wrap">
-<div class="why-img">{img('crew','', '(max-width:1024px) 100vw, 45vw').replace('alt=""', 'alt="Florida Fence Solution crew"')}</div>
+<div class="why-img">{img('crew','', '(max-width:1024px) 90vw, 45vw').replace('alt=""', 'alt="Florida Fence Solution crew"')}</div>
 <div class="prose"><span class="kicker">Pricing</span><h2>What affects the price</h2>
 <ul class="price">{cost}</ul>
 <p>Every estimate is free and in writing, after we measure on site. No surprises: permit, materials, labor and cleanup are included in the quote.</p>
@@ -194,7 +194,7 @@ for x in L:
 os.makedirs('services', exist_ok=True)
 smeta = []
 for s in S + L:
-    html = (css + '\n' + spage(s)).encode('ascii', 'xmlcharrefreplace').decode()
+    html = (css + '\n' + spage(s)).replace('loading="lazy"', 'loading="lazy" fetchpriority="low"').encode('ascii', 'xmlcharrefreplace').decode()
     assert html.count('<div') == html.count('</div'), s['slug']
     open(f'services/{s["slug"]}.html', 'w').write(html)
     smeta.append(dict(slug=s['slug'], ad_group=s['ag'], title=s['title'], desc=s['desc']))
