@@ -12,19 +12,37 @@
 .ffs .ftable{width:100%;min-width:520px;border-collapse:collapse;font-size:.95rem}
 .ffs .ftable th,.ffs .ftable td{text-align:left;vertical-align:top;padding:10px 12px;border-bottom:1px solid var(--light-2)}
 .ffs .ftable td{color:var(--muted)}
+.ffs .q-anchor{height:0;scroll-margin-top:84px}
+body:not(.sqs-edit-mode-active) .fluid-engine:has(.city-hero):has(.sqs-block-form){position:relative!important}
+body:not(.sqs-edit-mode-active) .fluid-engine:has(.sqs-block-form) .fe-block:has(.city-hero),
+body:not(.sqs-edit-mode-active) .fluid-engine:has(.sqs-block-form) .fe-block :has(.city-hero):not(.hero){display:contents!important}
+body:not(.sqs-edit-mode-active) .fluid-engine:has(.sqs-block-form) .ffs:has(.city-hero)>*{order:3;min-width:0}
+body:not(.sqs-edit-mode-active) .fluid-engine:has(.sqs-block-form) .ffs>.city-hero{order:1}
+body:not(.sqs-edit-mode-active) .fluid-engine:has(.sqs-block-form) .ffs>.q-anchor{order:2}
+.fluid-engine:has(.city-hero) .fe-block:has(.sqs-block-form){order:2!important;min-height:0!important;height:auto!important;margin:24px auto 0!important;padding:24px!important;border-radius:20px}
+.fluid-engine:has(.city-hero) .fe-block:has(.sqs-block-form) .sqs-block-content::before{content:"Get your free estimate";font-size:1.5rem}
+.fluid-engine:has(.city-hero) .fe-block:has(.sqs-block-form) .form-wrapper::before{content:"We answer the same day. Hablamos espa\F1ol.";margin-bottom:8px}
+@media (max-width:1024px){.fluid-engine:has(.sqs-block-form) .ffs .city-hero{min-height:56svh}}
+@media (min-width:1025px){
+body:not(.sqs-edit-mode-active) .fluid-engine:has(.city-hero) .fe-block:has(.sqs-block-form){position:absolute!important;top:100px;right:calc((100% - min(1280px,100%))/2 + clamp(20px,4vw,48px));left:auto;width:400px!important;margin:0!important;box-shadow:0 24px 60px -20px rgba(0,0,0,.6)}
+.fluid-engine:has(.sqs-block-form) .ffs .city-hero{min-height:max(72svh,820px)}
+.fluid-engine:has(.sqs-block-form) .ffs .city-hero .hero-copy{max-width:min(820px,calc(100% - 448px))}
+.ffs .q-anchor{position:absolute;top:0}
+}
 </style>
 <div class="ffs">
 <header class="site-header"><div class="wrap"><a class="logo" href="/" aria-label="Florida Fence Solution, home"><img src="https://feliperpovera.github.io/florida-fence-solution/img/logo.png" alt="Florida Fence Solution" width="69" height="44"></a>
 <nav aria-label="Main"><ul><li><a href="/residential-fence-solutions">Fences</a></li><li><a href="/fence-company-reviews">Reviews</a></li><li><a href="/fence-installation-process">Process</a></li><li><a href="/service-areas">Areas</a></li><li><a href="/fence-faq">FAQ</a></li><li><a href="/blog">Blog</a></li></ul></nav>
-<div class="h-right"><a class="btn btn-glass h-call" href="tel:+17542089268"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.6a1 1 0 0 1-.25 1z"/></svg><span class="long">(754) 208-9268</span><span class="short">Call</span></a><a class="btn btn-accent" href="/#estimate">Free estimate</a></div></div></header>
+<div class="h-right"><a class="btn btn-glass h-call" href="tel:+17542089268"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.6a1 1 0 0 1-.25 1z"/></svg><span class="long">(754) 208-9268</span><span class="short">Call</span></a><a class="btn btn-accent" href="#quote">Free estimate</a></div></div></header>
 <section class="hero city-hero"><img src="https://feliperpovera.github.io/florida-fence-solution/img/louvered-pvc-privacy-panels-480.webp" srcset="https://feliperpovera.github.io/florida-fence-solution/img/louvered-pvc-privacy-panels-480.webp 480w, https://feliperpovera.github.io/florida-fence-solution/img/louvered-pvc-privacy-panels.webp 674w" sizes="100vw" alt="Fence installed by Florida Fence Solution in Fort Lauderdale, FL" fetchpriority="high" width="1200" height="900">
 <div class="wrap"><div class="hero-copy">
 <span class="kicker">Fence contractor &#183; Fort Lauderdale, FL</span>
 <h1>Fence company in Fort Lauderdale, FL <em>built for Florida weather.</em></h1>
 <p class="sub">From waterfront homes on the canals to commercial lots off Broward Blvd, we build fences that pass inspection and handle coastal weather.</p>
-<div class="ctas"><a class="btn btn-accent" href="/#estimate">Get a free estimate <span class="arr" aria-hidden="true">&#8594;</span></a><a class="btn btn-glass" href="tel:+17542089268">Call (754) 208-9268</a></div>
+<div class="ctas"><a class="btn btn-accent" href="#quote">Get a free estimate <span class="arr" aria-hidden="true">&#8594;</span></a><a class="btn btn-glass" href="tel:+17542089268">Call (754) 208-9268</a></div>
 <a class="rating" href="/#reviews"><b>5.0</b><span class="stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</span><span>17 Google reviews</span></a>
 </div></div></section>
+<div id="quote" class="q-anchor"></div>
 
 <section id="fences"><div class="wrap">
 <div class="head"><div><span class="kicker">Fences in Fort Lauderdale</span><h2>What we install in Fort Lauderdale</h2></div>
@@ -52,7 +70,7 @@
 
 <section class="estimate"><div class="wrap">
 <div><span class="kicker">Free estimate</span><h2>Get your Fort Lauderdale fence quote</h2><p class="lead">Takes a minute. We answer the same day. Hablamos espa&#241;ol.</p>
-<div class="ctas" style="margin-top:24px"><a class="btn btn-accent" href="/#estimate">Request an estimate <span class="arr" aria-hidden="true">&#8594;</span></a><a class="btn btn-dark" href="tel:+17542089268">Call (754) 208-9268</a><a class="btn btn-dark" href="https://wa.me/17542089268?text=Hi!%20I'd%20like%20a%20free%20fence%20estimate%20in%20Fort%20Lauderdale." target="_blank" rel="noopener">WhatsApp</a></div></div>
+<div class="ctas" style="margin-top:24px"><a class="btn btn-accent" href="#quote">Request an estimate <span class="arr" aria-hidden="true">&#8594;</span></a><a class="btn btn-dark" href="tel:+17542089268">Call (754) 208-9268</a><a class="btn btn-dark" href="https://wa.me/17542089268?text=Hi!%20I'd%20like%20a%20free%20fence%20estimate%20in%20Fort%20Lauderdale." target="_blank" rel="noopener">WhatsApp</a></div></div>
 <div class="near"><span class="kicker">Nearby areas</span><h3 style="margin-bottom:12px">We also build fences in</h3><a href="/fence-company-hollywood-fl">Fence company in Hollywood</a><a href="/fence-company-pembroke-pines-fl">Fence company in Pembroke Pines</a><a href="/fence-company-miramar-fl">Fence company in Miramar</a><a href="/fence-company-davie-fl">Fence company in Davie</a><a href="/fence-company-weston-fl">Fence company in Weston</a><a href="/fence-company-coral-springs-fl">Fence company in Coral Springs</a><a href="/fence-company-plantation-fl">Fence company in Plantation</a><a href="/fence-company-miami-gardens-fl">Fence company in Miami Gardens</a><a href="/#areas">All of Broward County</a></div>
 </div></section>
 

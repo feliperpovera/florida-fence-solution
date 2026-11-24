@@ -1,37 +1,68 @@
 # Service landing pages (one per Google Ads ad group). Run via cities.py, which defines css, img, HEAD, foot, C, SVC_NAV.
 CAT = B + 'img/catalog/'
 S = [
- dict(slug='vinyl-pvc-fence-installation', ag='Vinyl & PVC Fence', hero='pvc', tag='PVC vinyl',
-      title='Vinyl & PVC Fences in Broward, FL | Florida Fence Solution',
-      desc='PVC vinyl privacy fence installation in Broward County, FL. White or tan, horizontal, louvered and shadowbox. Permits & HOA handled. Free estimate: (754) 208-9268.',
-      h1='Vinyl &amp; PVC fence installation <em>in Broward County.</em>',
-      sub='Privacy without painting. We measure, pull the permit and install white or tan PVC vinyl fences with our own crew.',
-      h2='PVC vinyl fences built for South Florida',
-      body=['PVC vinyl is the most requested privacy fence in Broward County. It does not rot, peel or need paint, and a garden hose is all it takes to keep it clean. That makes it the go-to choice for HOA communities in Pembroke Pines, Miramar, Weston and Coral Springs.',
-            'We install standard privacy, horizontal, louvered and shadowbox styles in white or tan, with matching single and double gates. Posts are set in concrete and reinforced where gates hang, so the fence stays straight through hurricane season.'],
-      styles=['Standard privacy', 'Horizontal PVC', 'Louvered PVC', 'Shadowbox PVC', 'White or tan', 'Single &amp; double gates'],
-      gal=[('pvc/pvc-standard-privacy-pvc-04', 'Standard privacy PVC'), ('pvc/pvc-horizontal-pvc-with-gates-03', 'Horizontal PVC with gates'), ('pvc/pvc-louvered-pvc-tan-02', 'Tan louvered PVC'), ('pvc/pvc-shadowbox-pvc-05', 'Shadowbox PVC'), ('pvc/pvc-tan-pvc-double-gate-01', 'Tan PVC double gate'), ('pvc/pvc-louvered-pvc-07', 'Louvered PVC')],
-      cost=['Linear feet and height (4, 5 or 6 ft)', 'Style: standard, horizontal, louvered or shadowbox', 'Number and size of gates', 'Removal of an old fence, if any'],
-      faq=[('How long does a PVC vinyl fence last in Florida?', 'A quality PVC fence lasts 20+ years in South Florida. It does not rot or rust and only needs an occasional rinse.'),
-           ('Does vinyl fence turn yellow in the sun?', 'We install UV-stabilized panels made for Florida sun, so white PVC stays white.'),
-           ('Will my HOA approve a PVC fence?', 'Most Broward HOAs approve white or tan PVC. We give you the specs and drawings for the application.'),
-           ('How long does installation take?', 'Most residential PVC fences are installed in 1 to 3 days once the permit is approved.')]),
- dict(slug='aluminum-pool-fence-installation', ag='Aluminum & Pool Fence', hero='alu', tag='Aluminum',
-      title='Aluminum & Pool Fences, Broward | Florida Fence Solution',
-      desc='Aluminum, Durafence and pool fence installation in Broward County, FL. Rust-proof, hurricane-ready, built to Florida pool code. Free estimate: (754) 208-9268.',
-      h1='Aluminum, Durafence &amp; pool fences <em>that never rust.</em>',
-      sub='Rust-proof fencing for salt air and hurricane season. Pool barriers built to Florida code, with self-closing gates.',
-      h2='Aluminum and Durafence for coastal Broward',
-      body=['Aluminum is the smart choice near the water. It does not rust, never needs paint and stands up to salt air from Hollywood to Fort Lauderdale. We install 4 ft. picket aluminum in black or white, horizontal slat aluminum and custom metal gates.',
-            'Durafence is an aluminum privacy fence with the look of PVC or wood and the strength of metal. We install standard, horizontal and shadowbox Durafence, one of the most popular modern styles in Weston and on waterfront homes.',
-            'For pools, we build barriers that meet the Florida Residential Pool Safety Act: the right height, no climbable gaps and self-closing, self-latching gates that open away from the pool.'],
-      styles=['Durafence', 'Horizontal Durafence', 'Shadowbox Durafence', 'Horizontal slat aluminum', '4 ft. pool fence', 'Custom metal gates'],
-      gal=[('aluminum/aluminum-horizontal-durafence-04', 'Horizontal Durafence'), ('aluminum/aluminum-white-durafence-01', 'White Durafence'), ('aluminum/aluminum-4-ft-aluminum-black-13', '4 ft. black aluminum'), ('aluminum/aluminum-4-ft-aluminum-lakefront-15', 'Lakefront aluminum'), ('aluminum/aluminum-horizontal-slat-gate-11', 'Horizontal slat gate'), ('aluminum/aluminum-custom-metal-double-gate-06', 'Custom metal double gate')],
-      cost=['Linear feet and height', 'Picket aluminum vs. Durafence privacy panels', 'Pool gates and self-closing hardware', 'Color: black, white or bronze'],
-      faq=[('What is Durafence?', 'Durafence is an aluminum privacy fence system. It looks like a solid privacy fence but is metal, so it won\'t rot, warp or rust and handles high winds.'),
-           ('What does a pool fence need in Florida?', 'A barrier at least 4 ft. tall with no climbable openings and self-closing, self-latching gates. We build to the Florida pool safety code and pass inspection.'),
-           ('Is aluminum good near the beach?', 'Yes. Powder-coated aluminum does not rust, which makes it the best option for coastal and canal homes.'),
-           ('Do you install aluminum gates?', 'Yes. Walk gates, double driveway gates and custom metal gates.')]),
+ dict(slug='vinyl-pvc-fence-installation', ag='Vinyl & PVC Fence', hero='pvc', tag='PVC vinyl', label='Vinyl',
+      title='Vinyl Fence & PVC Fence Installation in Broward County, FL',
+      desc='Vinyl fence and PVC fence installation in Broward County: privacy, horizontal, louvered & shadowbox, plus vinyl fence gates. Free estimate: (754) 208-9268.',
+      kicker='Vinyl fencing &#183; Broward County, FL',
+      h1='Vinyl fence &amp; PVC fence installation <em>in Broward County.</em>',
+      sub='White or tan vinyl privacy fences and matching gates, measured, permitted and installed by our own crew.',
+      h2='Vinyl fencing for Broward homes',
+      body=['Vinyl fence and PVC fence are two names for the same material. A vinyl fence gives you full privacy without painting or staining: it does not rot, and a garden hose and mild soap keep it clean. That is why it is a common choice for HOA communities in Pembroke Pines, Miramar, Weston and Coral Springs.',
+            '<h3>Vinyl fence styles we install</h3>',
+            table(['Style', 'Privacy', 'Good for'], [
+              ['Standard privacy', 'Full', 'Backyards, pools and shared property lines'],
+              ['Horizontal PVC', 'Full', 'Modern homes'],
+              ['Louvered PVC', 'High, lets air through', 'Windy lots and equipment areas'],
+              ['Shadowbox PVC', 'High, looks the same from both sides', 'Neighbors who share the fence']]),
+            'All four come in white or tan. See real jobs in the photos below.',
+            '<h3>Vinyl fence gates</h3>',
+            'We install single walk gates and double drive gates that match the fence. Gates carry more weight than any other part of a vinyl fence, so tell us how you will use yours (people, mowers, a boat or a car) and we will size it on site. If the gate is part of a pool barrier, it has to be self-closing and self-latching. See <a href="/pool-fence-requirements-florida">pool fence requirements in Florida</a>.',
+            '<h3>How much does a vinyl fence cost?</h3>',
+            'The price depends on total length, height, style, number of gates and whether an old fence has to come out first. Vinyl usually costs more than wood up front and needs far less upkeep after. We measure and give you the price in writing, free. Compare it with <a href="/wood-vs-vinyl-vs-aluminum-fence-florida">wood and aluminum</a>.',
+            '<h3>Permits and HOA approval</h3>',
+            'Most Broward cities require a permit for a new fence, and many HOAs limit height, color and style. We file the permit and give you the drawings and specs for your HOA. Read <a href="/fence-permit-broward-county">do you need a fence permit in Broward County?</a>'],
+      styles=['Vinyl privacy fence', 'Horizontal PVC', 'Louvered PVC', 'Shadowbox PVC', 'White or tan', 'Vinyl fence gates'],
+      gal=[('pvc/pvc-standard-privacy-pvc-04', 'Vinyl privacy fence'), ('pvc/pvc-horizontal-pvc-with-gates-03', 'Horizontal vinyl fence with gates'), ('pvc/pvc-louvered-pvc-tan-02', 'Tan louvered vinyl fence'), ('pvc/pvc-shadowbox-pvc-05', 'Shadowbox vinyl fence'), ('pvc/pvc-tan-pvc-double-gate-01', 'Tan vinyl double gate'), ('pvc/pvc-standard-pvc-gate-06', 'Vinyl fence gate')],
+      cost=['Linear feet and height', 'Style: standard, horizontal, louvered or shadowbox', 'Number and size of gates', 'Removal of an old fence, if any'],
+      faq=[('Is a vinyl fence the same as a PVC fence?', 'Yes. PVC is the plastic a vinyl fence is made of, and people use both names for the same fence.'),
+           ('Do you install vinyl fence gates?', 'Yes. Single walk gates and double drive gates that match the fence, in white or tan.'),
+           ('Does a vinyl fence turn yellow in the sun?', 'Vinyl panels made for outdoor use have UV protection that slows yellowing. Ask us about the panel and its warranty when we quote.'),
+           ('Will my HOA approve a vinyl fence?', 'White and tan vinyl are common choices in Broward HOAs, but each one sets its own rules. We give you the specs and drawings for the application.'),
+           ('How long does installation take?', 'Most homes take 1 to 3 days once the permit is approved.')]),
+ dict(slug='aluminum-pool-fence-installation', ag='Aluminum & Pool Fence', hero='alu', tag='Aluminum', label='Metal and aluminum',
+      title='Metal, Aluminum & Pool Fences in Broward County, FL',
+      desc='Metal fence installation in Broward: aluminum, sheet metal privacy panels, galvanized chain-link (wire mesh) and pool fences. Free estimate: (754) 208-9268.',
+      kicker='Metal fencing &#183; Broward County, FL',
+      h1='Metal fence &amp; aluminum fence installation <em>in Broward County.</em>',
+      sub='Aluminum and pool fences, sheet metal privacy panels and galvanized chain-link, measured, permitted and installed by our own crew.',
+      h2='Metal fencing in Broward: which type do you need?',
+      body=['&#8220;Metal fence&#8221; can mean very different things: a see-through aluminum fence around a pool, solid sheet metal panels for privacy, or a galvanized wire fence for security. Here is how the metal fences we install compare.',
+            table(['Metal fence', 'Privacy', 'Good for'], [
+              ['Aluminum picket', 'Open', 'Pools, front yards, waterfront lots'],
+              ['Horizontal slat aluminum', 'Partial', 'Modern homes and gates'],
+              ['Durafence sheet metal panels', 'Full', 'Backyard privacy with a modern look'],
+              ['Galvanized or black chain-link (wire mesh)', 'Open, or partial with slats', 'Security, pets, lots and businesses'],
+              ['Custom metal gates', 'Open to full', 'Driveways and walkways']]),
+            '<h3>Aluminum fence</h3>',
+            'Aluminum does not rust, which makes it the metal of choice near the ocean and the canals from Hollywood to Fort Lauderdale. We install 4 ft. aluminum fence in black or white, horizontal slat aluminum and matching gates.',
+            '<h3>Sheet metal privacy fence (Durafence)</h3>',
+            'If you are looking for a sheet metal fence, this is it: solid ribbed metal panels set between metal posts, with no gaps to see through. A sheet metal privacy fence comes in standard, horizontal and shadowbox Durafence. Photos of our jobs are below.',
+            '<h3>Wire fence, wire mesh and galvanized fence</h3>',
+            'Most people who search for wire fencing or a mesh fence need chain-link: steel wire woven into a diamond mesh. A galvanized fence has a zinc coating that protects the steel and is the economical option. Black coated chain-link blends into the yard, and privacy slats block the view. See <a href="/chain-link-fence-installation">chain-link fence installation</a>. Need a welded mesh fence, with wires welded into squares instead of woven? Tell us the height and what you want to enclose, and we will confirm the options and price in your estimate.',
+            '<h3>Metal pool fence</h3>',
+            'A Florida pool barrier has to be at least 4 ft. tall on the outside, with no gaps a child can get through or climb, and gates that self-close, self-latch and open away from the pool. Aluminum picket is the usual choice. Read the <a href="/pool-fence-requirements-florida">pool fence requirements in Florida</a>.',
+            '<h3>Metal fence installation, step by step</h3>',
+            'We measure on site and quote in writing, file the permit with your city, install with our own crew and schedule the final city inspection. Most homes take 1 to 3 days once the permit is approved. See <a href="/fence-installation-process">the full process</a>.'],
+      styles=['Aluminum fence', 'Sheet metal privacy fence', 'Galvanized fence', 'Wire mesh / chain-link', 'Pool fence', 'Custom metal gates'],
+      gal=[('aluminum/aluminum-horizontal-durafence-04', 'Horizontal sheet metal privacy fence (Durafence)'), ('aluminum/aluminum-white-durafence-01', 'White metal privacy fence (Durafence)'), ('aluminum/aluminum-4-ft-aluminum-black-13', '4 ft. black aluminum fence'), ('aluminum/aluminum-4-ft-aluminum-lakefront-15', 'Lakefront aluminum fence'), ('aluminum/aluminum-horizontal-slat-gate-11', 'Horizontal slat gate'), ('aluminum/aluminum-custom-metal-double-gate-06', 'Custom metal double gate'), ('chain-link/chain-link-galvanized-chain-link-04', 'Galvanized wire mesh fence (chain-link)'), ('chain-link/chain-link-black-chain-link-02', 'Black wire mesh fence (chain-link)')],
+      cost=['Linear feet and height', 'Type of metal fence: aluminum, sheet metal panels or galvanized chain-link', 'Gates and self-closing pool hardware', 'Removal of an old fence, if any'],
+      faq=[('What kinds of metal fence do you install?', 'Aluminum picket and slat fences, Durafence sheet metal privacy panels, galvanized and black chain-link, pool fences and custom metal gates.'),
+           ('What is a sheet metal privacy fence?', 'A fence made of solid metal panels set between posts, with no gaps to see through. We install it as Durafence.'),
+           ('Do you install wire or welded mesh fences?', 'We install chain-link, which is a woven wire mesh. For welded mesh, send us the height and size you need and we will confirm the options in your free estimate.'),
+           ('Galvanized fence or aluminum fence near the beach?', 'Galvanized steel is protected by a zinc coating, but salt air wears it down over time. Aluminum does not rust, so it is the safer choice close to the ocean.'),
+           ('What does a pool fence need in Florida?', 'At least 4 ft. tall on the outside, no climbable openings, and self-closing, self-latching gates that open away from the pool.'),
+           ('Do you install metal gates?', 'Yes. Walk gates, double driveway gates and custom metal gates.')]),
  dict(slug='wood-fence-installation', ag='Wood & Chain Link Fence', hero='wood', tag='Wood',
       title='Wood Fence Company in South Florida | Florida Fence Solution',
       desc='Wood fence company in South Florida: horizontal, shadowbox, board-on-board & ranch pine fences in Broward. Permits handled. Free estimate: (754) 208-9268.',
@@ -117,9 +148,10 @@ def spage(s):
 <div class="ctas"><a class="btn btn-accent" href="/#estimate">Get a free estimate <span class="arr" aria-hidden="true">&#8594;</span></a><a class="btn btn-glass" href="tel:+17542089268">Call (754) 208-9268</a></div>
 <a class="rating" href="/#reviews"><b>5.0</b><span class="stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</span><span>17 Google reviews</span></a>
 </div></div></section>
+<div id="quote" class="q-anchor"></div>
 
 <section id="fences"><div class="wrap">
-<div class="head"><div><span class="kicker">{s['tag']}</span><h2>{s['h2']}</h2></div>
+<div class="head"><div><span class="kicker">{s.get('label', s['tag'])}</span><h2>{s['h2']}</h2></div>
 <div class="prose">{body}</div></div>
 <ul class="chips" style="margin:8px 0 28px">{chips}</ul>
 <div class="cat-grid">{gal}</div>
@@ -136,11 +168,11 @@ def spage(s):
 </div></div></section>
 
 <section id="faq" class="dark" style="padding-top:0"><div class="wrap faq-grid">
-<div><span class="kicker">FAQ</span><h2>{s['tag']} fence questions</h2></div>
+<div><span class="kicker">FAQ</span><h2>{s.get('label', s['tag'])} fence questions</h2></div>
 <div class="faq">{faqs}</div></div></section>
 
 <section class="estimate"><div class="wrap">
-<div><span class="kicker">Free estimate</span><h2>Get your {s['tag'].lower()} fence quote</h2><p class="lead">Takes a minute. We answer the same day. Hablamos espa&#241;ol.</p>
+<div><span class="kicker">Free estimate</span><h2>Get your {s.get('label', s['tag']).lower()} fence quote</h2><p class="lead">Takes a minute. We answer the same day. Hablamos espa&#241;ol.</p>
 <div class="ctas" style="margin-top:24px"><a class="btn btn-accent" href="/#estimate">Request an estimate <span class="arr" aria-hidden="true">&#8594;</span></a><a class="btn btn-dark" href="tel:+17542089268">Call (754) 208-9268</a><a class="btn btn-dark" href="{wa}" target="_blank" rel="noopener">WhatsApp</a></div></div>
 <div class="near"><span class="kicker">More services</span><h3 style="margin-bottom:12px">We also install</h3>{others}<h3 style="margin:20px 0 12px">Areas we serve</h3>{cities}</div>
 </div></section>
@@ -194,7 +226,7 @@ for x in L:
 os.makedirs('services', exist_ok=True)
 smeta = []
 for s in S + L:
-    html = (css + '\n' + spage(s)).replace('loading="lazy"', 'loading="lazy" fetchpriority="low"').encode('ascii', 'xmlcharrefreplace').decode()
+    html = (css + '\n' + spage(s)).replace('loading="lazy"', 'loading="lazy" fetchpriority="low"').replace('href="/#estimate"', 'href="#quote"').encode('ascii', 'xmlcharrefreplace').decode()
     assert html.count('<div') == html.count('</div'), s['slug']
     open(f'services/{s["slug"]}.html', 'w').write(html)
     smeta.append(dict(slug=s['slug'], ad_group=s['ag'], title=s['title'], desc=s['desc']))

@@ -15,6 +15,27 @@ def more(kicker, h2, parts):
     body = ''.join(p if p.startswith('<') else f'<p>{p}</p>' for p in parts)
     return f'<section id="local-guide"><div class="wrap"><div class="prose" style="max-width:860px"><span class="kicker">{kicker}</span><h2>{h2}</h2>{body}</div></div></section>'
 
+# Native form block on service/city pages: live page unwraps the code block (display:contents) so the form can sit
+# right after the hero (phones) or on top of it (desktop). Skipped in the Squarespace editor so blocks stay clickable.
+css = css.replace('</style>', """.ffs .q-anchor{height:0;scroll-margin-top:84px}
+body:not(.sqs-edit-mode-active) .fluid-engine:has(.city-hero):has(.sqs-block-form){position:relative!important}
+body:not(.sqs-edit-mode-active) .fluid-engine:has(.sqs-block-form) .fe-block:has(.city-hero),
+body:not(.sqs-edit-mode-active) .fluid-engine:has(.sqs-block-form) .fe-block :has(.city-hero):not(.hero){display:contents!important}
+body:not(.sqs-edit-mode-active) .fluid-engine:has(.sqs-block-form) .ffs:has(.city-hero)>*{order:3;min-width:0}
+body:not(.sqs-edit-mode-active) .fluid-engine:has(.sqs-block-form) .ffs>.city-hero{order:1}
+body:not(.sqs-edit-mode-active) .fluid-engine:has(.sqs-block-form) .ffs>.q-anchor{order:2}
+.fluid-engine:has(.city-hero) .fe-block:has(.sqs-block-form){order:2!important;min-height:0!important;height:auto!important;margin:24px auto 0!important;padding:24px!important;border-radius:20px}
+.fluid-engine:has(.city-hero) .fe-block:has(.sqs-block-form) .sqs-block-content::before{content:"Get your free estimate";font-size:1.5rem}
+.fluid-engine:has(.city-hero) .fe-block:has(.sqs-block-form) .form-wrapper::before{content:"We answer the same day. Hablamos espa\\F1ol.";margin-bottom:8px}
+@media (max-width:1024px){.fluid-engine:has(.sqs-block-form) .ffs .city-hero{min-height:56svh}}
+@media (min-width:1025px){
+body:not(.sqs-edit-mode-active) .fluid-engine:has(.city-hero) .fe-block:has(.sqs-block-form){position:absolute!important;top:100px;right:calc((100% - min(1280px,100%))/2 + clamp(20px,4vw,48px));left:auto;width:400px!important;margin:0!important;box-shadow:0 24px 60px -20px rgba(0,0,0,.6)}
+.fluid-engine:has(.sqs-block-form) .ffs .city-hero{min-height:max(72svh,820px)}
+.fluid-engine:has(.sqs-block-form) .ffs .city-hero .hero-copy{max-width:min(820px,calc(100% - 448px))}
+.ffs .q-anchor{position:absolute;top:0}
+}
+</style>""")
+
 IMG = {
  'pvc': 'img/white-pvc-privacy-fence-backyard-pool', 'wood': 'img/horizontal-pine-wood-fence',
  'alley': 'img/horizontal-louvered-pvc-fence-alley', 'chain': 'img/black-chain-link-fence-garden',
@@ -149,6 +170,7 @@ def page(c):
 <div class="ctas"><a class="btn btn-accent" href="/#estimate">Get a free estimate <span class="arr" aria-hidden="true">&#8594;</span></a><a class="btn btn-glass" href="tel:+17542089268">Call (754) 208-9268</a></div>
 <a class="rating" href="/#reviews"><b>5.0</b><span class="stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</span><span>17 Google reviews</span></a>
 </div></div></section>
+<div id="quote" class="q-anchor"></div>
 
 <section id="fences"><div class="wrap">
 <div class="head"><div><span class="kicker">Fences in {n}</span><h2>What we install in {n}</h2></div>
@@ -187,7 +209,7 @@ os.makedirs('cities', exist_ok=True)
 meta = []
 for c in C:
     html = css + '\n' + page(c)
-    html = html.replace('loading="lazy"', 'loading="lazy" fetchpriority="low"').encode('ascii', 'xmlcharrefreplace').decode()
+    html = html.replace('loading="lazy"', 'loading="lazy" fetchpriority="low"').replace('href="/#estimate"', 'href="#quote"').encode('ascii', 'xmlcharrefreplace').decode()
     assert html.count('<div') == html.count('</div'), c['slug']
     open(f'cities/{c["slug"]}.html', 'w').write(html)
     meta.append(dict(slug=f'fence-company-{c["slug"]}-fl', title=(t if len(t := f'Fence Company in {c["name"]}, FL | Florida Fence Solution') <= 60 else t.replace(' in ', ' ', 1)),
